@@ -34,3 +34,15 @@ Timestamp: Mon May 25 2020 20:42:57 GMT+0200 (Central European Summer Time)
 URL: /img/favicon.png
 Timestamp: Mon May 25 2020 20:42:57 GMT+0200 (Central European Summer Time)
 
+URL: /
+Timestamp: Mon May 25 2020 20:48:04 GMT+0200 (Central European Summer Time)
+
+URL: /img/favicon.png
+Timestamp: Mon May 25 2020 20:48:05 GMT+0200 (Central European Summer Time)
+
+URL: /documentation
+Timestamp: Mon May 25 2020 20:48:20 GMT+0200 (Central European Summer Time)
+
+URL: /img/favicon.png
+Timestamp: Mon May 25 2020 20:48:20 GMT+0200 (Central European Summer Time)
+
