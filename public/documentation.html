@@ -32,14 +32,14 @@
       </ul>
     </div>
     <div>
-      <h3>3. Return data (title, released, director, staring, genre) about a single movie by title to the user</h3>
+      <h3>3. Return data (title, description, director, genre, URL, Featured Y/N) about a single movie by title to the user</h3>
       <ul>
         <li>Method type: GET</li>
         <li>Query Perameters: '/movies/:title'</li>
         <li>Data in Body of Request: None</li>
         <li>
           Response: A JSON object holding the movie detials for the specific title. E.g. <br>
-          {title: "film name", released: "yyyy", director: "director name", staring: ["actor name", "2nd actor name"], genre: ["genre", "2nd genre"]}
+          {title: "film name", description: "description", director: "director name", genre: "genre", imageURL: "URL", Featured: "Yes or No"}
         </li>
       </ul>
     </div>
@@ -51,7 +51,7 @@
         <li>Data in Body of Request: None</li>
         <li>
           Response: All JSON objects relevant to specific genre selected in format E.g. <br>
-          {title: "film name", released: "yyyy", director: "director name", staring: ["actor name", "2nd actor name"], genre: ["genre", "2nd genre"]}
+          {Name: "Genre Name", Description: "genre description"}
         </li>
       </ul>
     </div>
@@ -62,8 +62,8 @@
         <li>Query Perameters: '/movies/directors/:director'</li>
         <li>Data in Body of Request: None</li>
         <li>
-          Response: All JSON movie data relevant to specific director (including DOB, and other details if listed) selected in format E.g. <br>
-          {title: "film title", director: "director name", {dateOfBirth: "date", dateOfDeath: "date" / "none", numberOfFilms: "xx"}}
+          Response: All JSON data relevant to specific director (including DOB, and other details if listed) selected in format E.g. <br>
+            {Name: "director name", Bio: "director bio", BirthYear: "yyyy", DeathYear: "yyyy", }
         </li>
       </ul>
     </div>
