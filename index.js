@@ -1,138 +1,175 @@
 const express = require('express'),
   morgan = require('morgan'),
   bodyParser = require('body-parser'),
-  uuid = require('uuid');
+  uuid = require('uuid'),
+  mongoose = require('mongoose'),
+  Models = require('./models.js');
+
+const Movies = Models.Movie;
+const Users = Models.User;
+
+mongoose.connect('mongodb://localhost:27017/SFlixDatabase', { useNewUrlParser: true, useUnifiedTopology: true});
 
 const app = express();
 
 app.use(morgan('common'));
 app.use(bodyParser.json());
 
-let movies = [
-  {
-    title: 'Joker',
-    released: '2019',
-    director: 'Todd Phillips',
-    staring: ['Joaquin Phoenix', 'Robert De Niro', 'Zazie Beetz', 'Frances Conroy'],
-    genre: ['Crime', 'Drama', 'Thriller']
-  },
-  {
-    title: 'The Dark Knight Rises',
-    released: '2012',
-    director: 'Christopher Nolan',
-    staring: ['Christian Bale', 'Tom Hardy', 'Anne Hathaway', 'Gary Oldman'],
-    genre: ['Action', 'Adventure']
-  },
-  {
-    title: 'Suicide Squad',
-    released: '2016',
-    director: 'David Ayer',
-    staring: ['Will Smith', 'Jared Leto', 'Margot Robbie', 'Viola Davis'],
-    genre: ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']
-  },
-  {
-    title: 'Man of Steel',
-    released: '2013',
-    director: 'Zack Snyder',
-    staring: ['Henry Cavill', 'Amy Adams', 'Michael Shannon', 'Diane Lane'],
-    genre: ['Action', 'Adventure', 'Sci-Fi']
-  },
-  {
-    title: 'Guardians of the Galaxy',
-    released: '2014',
-    director: 'James Gunn',
-    staring: ['Chris Pratt', 'Vin Diesel', 'Bradley Cooper', 'Zoe Saldana'],
-    genre: ['Action', 'Adventure', 'Comedy', 'Sci-Fi']
-  },
-  {
-    title: 'Watchmen',
-    released: '2009',
-    director: 'Zack Snyder',
-    staring: ['Jackie Earle Haley', 'Patrick Wilson', 'Carla Gugino', 'Malin Akerman'],
-    genre: ['Action', 'Drama', 'Mystery', 'Sci-Fi']
-  },
-  {
-    title: 'Batman Begins',
-    released: '2005',
-    director: 'Christopher Nolan',
-    staring: ['Christian Bale', 'Michael Caine', 'Ken Watanabe', 'Liam Neeson'],
-    genre: ['Action', 'Adventure']
-  },
-  {
-    title: 'Green Lantern',
-    released: '2011',
-    director: 'Greg Berlanti',
-    staring:  ['Ryan Reynolds', 'Blake Lively', 'Peter Sarsgaard'],
-    genre: ['Action', 'Adventure', 'Sci-Fi']
-  },
-  {
-    title: 'Thor: Ragnarok',
-    released: '2017',
-    director: 'Taika Waititi',
-    staring: ['Chris Hemsworth', 'Tom Hiddleston', 'Cate Blanchett', 'Mark Ruffalo'],
-    genre: ['Action', 'Adventure', 'Comedy', 'Fantasy', 'Sci-Fi']
-  },
-  {
-    title: 'Deadpool',
-    released: '2016',
-    director: 'Tim Miller',
-    staring: ['Ryan Reynolds', 'Morena Baccarin', 'T.J. Miller'],
-    genre: ['Action', 'Adventure', 'Comedy', 'Sci-Fi']
-  }
-];
-
+// home page - welcome
 app.get('/', (req, res) => {
   res.status(201).send('Welcome to SuperFlix - an app that takes the stress out of choosing your next superhero movie!');
 });
 
-// gets the full list of movies
+// gets the full list of movies - no specific criteria
 app.get('/movies', (req, res) => {
-  res.json(movies);
+  Movies.find()
+    .then((movies) => {
+      res.status(201).json(movies);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
 });
 
 // gets the data for a single movie searched by name
-app.get('/movies/:title', (req, res) => {
-  res.json(movies.find((movie) => { return movie.title === req.params.title }));
+app.get('/movies/:Title', (req, res) => {
+  Movies.findOne({ Title: req.params.Title })
+    .then((movies) => {
+      res.status(201).json(movies);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
 });
 
-// gets the detials about the genre when searching by genre
-app.get('/movies/genres/:genre', (req, res) => {
-res.status(201).send('Successfully display movies by genres.');
+// gets movies by genre when searching by genre
+app.get('/movies/genres/:Name', (req, res) => {
+  Movies.findOne({ 'Genre.Name': req.params.Name })
+    .then((movies) => {
+      res.status(201).json(movies.Genre);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
 });
 
-// gets the details about the director when searching by director name
-app.get('/movies/directors/:director', (req, res) => {
-  res.status(201).send('Successfully display specific director details')
+// gets movies by director when searching by director name
+app.get('/movies/directors/:Name', (req, res) => {
+  Movies.findOne({ 'Director.Name': req.params.Name })
+    .then((movies) => {
+      res.status(201).json(movies.Director);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
 });
 
 // allows new users to sign up adding a name, email and password as minimum
-app.post('/users/register', (req, res) => {
-  res.status(201).send('User profile successfully created.');
+app.post('/users', (req, res) => {
+  Users.findOne({ Username: req.body.Username })
+    .then((user) => {
+      if (user) {
+        return res.status(400).send(req.body.Username + 'already exists');
+      } else {
+        Users
+        .create({
+          Username: req.body.Username,
+          Password: req.body.Password,
+          Email: req.body.Email,
+          Birthday: req.body.Birthday
+        })
+        .then((user) =>{res.status(201).json(user) })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send('Error: ' + error);
+      })
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+    res.status(500).send('Error: ' + error);
+  });
 });
 
 // directed to users homepage
-app.get('/users/:id', (req, res) => {
-  res.status(201).send('Welcome ' + user.name);
-})
+app.get('/users/:Username', (req, res) => {
+  Users.findOne({ Username: req.params.Username })
+    .then((users) => {
+      res.json(users);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
 
-// allowing users to update their name
-app.put('/users/:id/updates', (req, res) => {
-  res.status(201).send('Successfully allow existing users to update profile details.')
+// allowing users to update their details by username
+app.put('/users/:Username', (req, res) => {
+  Users.findOneAndUpdate({ Username: req.params.Username }, { $set:
+    {
+      Username: req.body.Username,
+      Password: req.body.Password,
+      Email: req.body.Email,
+      Birthday: req.body.Birthday
+    }
+  }, { new: true })
+  .then((updatedUser) => {
+    res.json(updatedUser);
+  })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+  });
 });
 
 // allows users to delete their profile
-app.delete('/users/:id/deregister', (req, res) => {
-  res.status(201).send('Successfully allow existing users to deregister.')
+app.delete('/users/:Username', (req, res) => {
+  Users.findOneAndRemove({ Username: req.params.Username })
+  .then((user) => {
+    if (!user) {
+      res.status(400).send(req.params.Username + ' was not found');
+    } else {
+      res.status(200).send(req.params.Username + ' was deleted.');
+    }
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send('Error: ' + err);
+  });
 });
 
 // allows users to add movies to their favorites list by name
-app.post('/users/:id/favorites/add/:title', (req, res) => {
-  res.status(201).send('Successfully add a specific movie to users favorites list.')
+app.post('/users/:Username/Favorites/:_id', (req, res) => {
+  Users.findOneAndUpdate({ Username: req.params.Username },
+    { $push: { Favorites: req.params._id } },
+    { new: true },
+    (err, updatedUser) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+      } else {
+        res.json(updatedUser);
+      }
+  });
 });
 
 // alolows users to remove movies from their favorites list by name
-app.delete('/users/:id/favorites/remove/:title', (req, res) => {
-res.status(201).send('User profile successfully deleted.')
+app.delete('/users/:Username/Favorites/:_id', (req, res) => {
+  Users.findOneAndUpdate({ Username: req.params.Username },
+    { $pull: { Favorites: req.params._id } },
+    { new: true },
+    (err, updatedUser) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+      } else {
+        res.json(updatedUser);
+      }
+  });
 });
 
 app.use(express.static('public'));
