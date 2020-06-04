@@ -35,7 +35,7 @@
       <h3>3. Return data (title, description, director, genre, release, staring, URL, Featured Y/N) about a single movie by title to the user</h3>
       <ul>
         <li>Method type: GET</li>
-        <li>Query Perameters: '/movies/:title'</li>
+        <li>Query Perameters: '/movies/:Title'</li>
         <li>Data in Body of Request: None</li>
         <li>
           Response: A JSON object holding the movie detials for the specific title. E.g. <br>
@@ -47,7 +47,7 @@
       <h3>4. Return data about a genre (description) by name/title (e.g., “Thriller”)</h3>
       <ul>
         <li>Method type: GET</li>
-        <li>Query Perameters: '/movies/genres/:genre'</li>
+        <li>Query Perameters: '/movies/:Genre'</li>
         <li>Data in Body of Request: None</li>
         <li>
           Response: All JSON objects relevant to specific genre selected in format E.g. <br>
@@ -59,7 +59,7 @@
       <h3>5. Return data about a director (bio, birth year) by name</h3>
       <ul>
         <li>Method type: GET</li>
-        <li>Query Perameters: '/movies/directors/:director'</li>
+        <li>Query Perameters: '/movies/:Director'</li>
         <li>Data in Body of Request: None</li>
         <li>
           Response: All JSON data relevant to specific director (including DOB, and other details if listed) selected in format E.g. <br>
@@ -71,7 +71,7 @@
       <h3>6. Allow new users to register</h3>
       <ul>
         <li>Method type: POST</li>
-        <li>Query Perameters: '/users/register'</li>
+        <li>Query Perameters: '/users'</li>
         <li>
           Data in Body of Request: A JSON object holding the necessary data to create a new profile E.g. <br>
           {name: "test name", email: "test@test.com", password: "test password", dateOfBirth: "test date"}
@@ -86,7 +86,7 @@
       <h3>7. Home page for each specific user</h3>
       <ul>
         <li>Method type: GET</li>
-        <li>Query Perameters: '/users/:id'</li>
+        <li>Query Perameters: '/users/:Username'</li>
         <li>Data in Body of Request: None</li>
         <li>Response: Welcome text message using user.name</li>
       </ul>
@@ -95,7 +95,7 @@
       <h3>8. Allow users to update their user info (username, password, email, date of birth)</h3>
       <ul>
         <li>Method type: PUT</li>
-        <li>Query Perameters: '/users/:id/updates'</li>
+        <li>Query Perameters: '/users/:Username'</li>
         <li>
           Data in Body of Request: A JSON object holding the necessary data being updated in the profile E.g. <br>
           {name: "new test name", email: "newtest@test.com", password: "newtest password", dateOfBirth: "new test date"}
@@ -107,7 +107,7 @@
       <h3>9. Allow users to add a movie to their list of favorites</h3>
       <ul>
         <li>Method type: POST</li>
-        <li>Query Perameters: '/users/:id/favorites/add/:title'</li>
+        <li>Query Perameters: '/users/:Username/Favorites/:_id'</li>
         <li>Data in Body of Request: None (movie object already exists in app)</li>
         <li>Response: A text message confirming movie successfully added to list</li>
       </ul>
@@ -116,7 +116,7 @@
       <h3>10. Allow users to remove a movie from their list of favorites</h3>
       <ul>
         <li>Method type: DELETE</li>
-        <li>Query Perameters: '/users/:id/favorites/remove/:title'</li>
+        <li>Query Perameters: '/users/:Username/Favorites/:_id'</li>
         <li>Data in Body of Request: None</li>
         <li>Response: A text messae confirming movie successfully deleted from list</li>
       </ul>
@@ -125,7 +125,7 @@
       <h3>11. Allow existing users to deregister</h3>
       <ul>
         <li>Method type: DELETE</li>
-        <li>Query Perameters: '/users/:id/deregister'</li>
+        <li>Query Perameters: '/users/:Username'</li>
         <li>Data in Body of Request: None</li>
         <li>Response: A text message confiming successful deletion of account.</li>
       </ul>
