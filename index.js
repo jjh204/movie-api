@@ -29,6 +29,8 @@ app.use(cors({
 const passport = require('passport');
 require('./passport');
 
+const { check, validationResult } = require('express-validator');
+
 mongoose.connect('mongodb://localhost:27017/SFlixDatabase', { useNewUrlParser: true, useUnifiedTopology: true});
 
 const app = express();
@@ -92,7 +94,17 @@ app.get('/movies/directors/:Name', passport.authenticate('jwt', { session: false
 });
 
 // allows new users to sign up adding a name, email and password as minimum
-app.post('/users', (req, res) => {
+app.post('/users',
+[
+  check('Username', 'Username is required').isLength({min: 5}),
+  check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+  check('Password', 'Password is required.').not().isEmpty(),
+  check('Email', 'Email does not appear to be valid.').isEmail()
+], (req, res) => {
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
   let hashedPassword = Users.hashPassword(req.body.Password);
   Users.findOne({ Username: req.body.Username }) //searching to check if username exists
     .then((user) => {
@@ -132,7 +144,17 @@ app.get('/users/:Username', passport.authenticate('jwt', { session: false}), (re
 });
 
 // allowing users to update their details by username
-app.put('/users/:Username', passport.authenticate('jwt', { session: false}), (req, res) => {
+app.put('/users/:Username',
+[
+  check('Username', 'Username is required').isLength({min: 5}),
+  check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+  check('Password', 'Password is required.').not().isEmpty(),
+  check('Email', 'Email does not appear to be valid.').isEmail()
+], passport.authenticate('jwt', { session: false}), (req, res) => {
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
   Users.findOneAndUpdate({ Username: req.params.Username }, { $set:
     {
       Username: req.body.Username,
