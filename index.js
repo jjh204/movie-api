@@ -8,6 +8,24 @@ const express = require('express'),
 const Movies = Models.Movie;
 const Users = Models.User;
 
+// adding cors (express) for cross origin authentication
+const cors = require('cors');
+app.use(cors());
+
+// this restricts the origins allowed to the list below
+let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){
+      let message = 'The CORS policy for this application doesn\'t allow access from origin ' + origin;
+      return callback(new Error(message ), false);
+    }
+    return callback(null, true);
+  }
+}));
+
 const passport = require('passport');
 require('./passport');
 
@@ -75,7 +93,8 @@ app.get('/movies/directors/:Name', passport.authenticate('jwt', { session: false
 
 // allows new users to sign up adding a name, email and password as minimum
 app.post('/users', (req, res) => {
-  Users.findOne({ Username: req.body.Username })
+  let hashedPassword = Users.hashPassword(req.body.Password);
+  Users.findOne({ Username: req.body.Username }) //searching to check if username exists
     .then((user) => {
       if (user) {
         return res.status(400).send(req.body.Username + 'already exists');
@@ -83,7 +102,7 @@ app.post('/users', (req, res) => {
         Users
         .create({
           Username: req.body.Username,
-          Password: req.body.Password,
+          Password: hashedPassword,
           Email: req.body.Email,
           Birthday: req.body.Birthday
         })
