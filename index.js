@@ -221,8 +221,9 @@ app.delete('/users/:Username/Favorites/:_id', passport.authenticate('jwt', { ses
 app.use(express.static('public'));
 
 // this is the app listening to the server
-app.listen(8080, () => {
-console.log('My first Node test server is running on Port 8080.');
+const port = process.env.PORT || 8080;
+app.listen(port, '0.0.0.0', () => {
+  console.log('Listening on Port ' + port);
 });
 
 //general error code for app
