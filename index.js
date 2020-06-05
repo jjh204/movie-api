@@ -10,8 +10,6 @@ const Users = Models.User;
 
 // adding cors (express) for cross origin authentication
 const cors = require('cors');
-app.use(cors());
-
 // this restricts the origins allowed to the list below
 let allowedOrigins = ['http://localhost:8080', 'https://superflix-api.herokuapp.com/'];
 
