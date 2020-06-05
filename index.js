@@ -13,7 +13,7 @@ const cors = require('cors');
 app.use(cors());
 
 // this restricts the origins allowed to the list below
-let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
+let allowedOrigins = ['http://localhost:8080', 'https://superflix-api.herokuapp.com/'];
 
 app.use(cors({
   origin: (origin, callback) => {
