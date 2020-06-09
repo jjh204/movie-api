@@ -39,7 +39,7 @@
         <li>Data in Body of Request: None</li>
         <li>
           Response: A JSON object holding the movie detials for the specific title. E.g. <br>
-          {title: "film name", description: "description", director: {name: "director name", Bio: "director bio", Birth: "birth year"}, genre: {Name: "genre", Description: "genre description"}, release: "year", Staring: [actors], imageURL: "URL", Featured: "Yes or No"}
+          {title: "film name", description: "description", director: {name: "director name", Bio: "director bio", Birth: "yyyy"}, genre: {Name: "genre", Description: "genre description"}, release: "year", Staring: [actors], imageURL: "URL", Featured: "Yes or No"}
         </li>
       </ul>
     </div>
@@ -63,7 +63,7 @@
         <li>Data in Body of Request: None</li>
         <li>
           Response: All JSON data relevant to specific director (including DOB, and other details if listed) selected in format E.g. <br>
-            {Name: "director name", Bio: "director bio", BirthYear: "yyyy" }
+            {Name: "director name", Bio: "director bio", Birth: "yyyy" }
         </li>
       </ul>
     </div>
@@ -74,11 +74,11 @@
         <li>Query Perameters: '/users'</li>
         <li>
           Data in Body of Request: A JSON object holding the necessary data to create a new profile E.g. <br>
-          {name: "test name", email: "test@test.com", password: "test password", dateOfBirth: "test date"}
+          {Username: "test name", Password: "test password", Email: "test@test.com", Birthday: "test date"}
         </li>
         <li>
           Response: A JSON object holding the name and email data for the new profile (not password or DOB). Now object will now include and display "id" as well E.g. <br>
-          {id: "new id", name: "test name", email: "test@test.com", password: "test password", dateOfBirth: "test date"}
+          {id: "new id", Username: "test name", Password: "test password", Email: "test@test.com", Birthday: "yyyy-mm-dd"}
         </li>
       </ul>
     </div>
@@ -92,13 +92,13 @@
       </ul>
     </div>
     <div>
-      <h3>8. Allow users to update their user info (username, password, email, date of birth)</h3>
+      <h3>8. Allow users to update their user info (username, password, email, Birthday)</h3>
       <ul>
         <li>Method type: PUT</li>
         <li>Query Perameters: '/users/:Username'</li>
         <li>
           Data in Body of Request: A JSON object holding the necessary data being updated in the profile E.g. <br>
-          {name: "new test name", email: "newtest@test.com", password: "newtest password", dateOfBirth: "new test date"}
+          {name: "new test name", password: "newtest password", email: "newtest@test.com", Birthday: "new test date"}
         </li>
         <li>Response: A text message specifying that the update was successful for specific field.</li>
       </ul>
