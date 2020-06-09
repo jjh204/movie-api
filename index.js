@@ -8,6 +8,8 @@ const express = require('express'),
 const Movies = Models.Movie;
 const Users = Models.User;
 
+const app = express();
+
 // adding cors (express) for cross origin authentication
 const cors = require('cors');
 // this restricts the origins allowed to the list below
@@ -31,8 +33,6 @@ const { check, validationResult } = require('express-validator');
 
 /* mongoose.connect('mongodb://localhost:27017/SFlixDatabase', { useNewUrlParser: true, useUnifiedTopology: true}); */
 mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true});
-
-const app = express();
 
 app.use(morgan('common'));
 app.use(bodyParser.json());
