@@ -95,7 +95,7 @@ app.get('/movies/directors/:Name', passport.authenticate('jwt', { session: false
 // allows new users to sign up adding a name, email and password as minimum
 app.post('/users',
 [
-  check('Username', 'Username is required').isLength({min: 5}),
+  check('Username', 'Username with minimum 5 characters is required').isLength({min: 5}),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
   check('Password', 'Password is required.').not().isEmpty(),
   check('Email', 'Email does not appear to be valid.').isEmail()
@@ -105,10 +105,8 @@ app.post('/users',
     return res.status(422).json({ errors: errors.array() });
   }
   let hashedPassword = Users.hashPassword(req.body.Password);
-  Users.findOne({ Username: req.body.Username }) //searching to check if username exists
     .then((user) => {
       if (user) {
-        return res.status(400).send(req.body.Username + 'already exists');
       } else {
         Users
         .create({
@@ -145,7 +143,7 @@ app.get('/users/:Username', passport.authenticate('jwt', { session: false}), (re
 // allowing users to update their details by username
 app.put('/users/:Username',
 [
-  check('Username', 'Username is required').isLength({min: 5}),
+  check('Username', 'Username with minimum 5 characters is required').isLength({min: 5}),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
   check('Password', 'Password is required.').not().isEmpty(),
   check('Email', 'Email does not appear to be valid.').isEmail()
