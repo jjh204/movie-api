@@ -10,7 +10,7 @@ export class MainView extends React.Component {
 
   componentDidMount() {
     axios.get('<https://superflix-api.herokuapp.com/movies>')
-      .then(response => {
+      .then((response) => {
         // assign the result to the state
         this.setState({
           movies: response.data
