@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // importing the main-view from directory
-import { MainView } from './components/main-view/movie-view';
+import { MainView } from './components/main-view/main-view';
 
 import './index.scss';
 
