@@ -16,7 +16,7 @@ export class MainView extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('<https://superflix-api.herokuapp.com/movies>')
+    axios.get('https://superflix-api.herokuapp.com/movies')
       .then((response) => {
         // assign the result to the state
         this.setState({
@@ -34,6 +34,12 @@ export class MainView extends React.Component {
     });
   }
 
+  onBackClick() {
+    this.setState({
+      selectedMovie: null
+    });
+  }
+
   render() {
     // if state not initialized this will throw on runtime
     // before the data is initially loaded
@@ -44,12 +50,22 @@ export class MainView extends React.Component {
 
     return (
       <div className="main-view">
-        {selectedMovie
-          ? <MovieView movie={selectedMovie} />
-          : movies.map(movie => (
-            <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
-          ))
-        }
+        {selectedMovie ? (
+          <div>
+            <MovieView
+              movie={selectedMovie}
+              onBackClick={() => this.onBackClick()}
+            />
+          </div>
+        ) : (
+            movies.map(movie => (
+              <MovieCard
+                key={movie._id}
+                movie={movie}
+                onClick={movie => this.onMovieClick(movie)}
+              />
+            ))
+          )}
       </div>
     );
   }
