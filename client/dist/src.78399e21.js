@@ -32595,10 +32595,12 @@ function RegistrationView(props) {
     }).then(function (response) {
       var data = response.data;
       console.log(data);
-      alert('Your account has been created! Please Login.');
+      alert('Your account has been created - you can now Login.');
     }).catch(function (e) {
       console.log('registration error');
     });
+
+    props.cancelRegistration();
   };
 
   var handleCancellation = function handleCancellation() {
@@ -32772,7 +32774,7 @@ function LoginView(props) {
     variant: "info",
     type: "submit",
     className: "button"
-  }, "Register!"));
+  }, "Register"));
 }
 
 LoginView.propTypes = {
@@ -33473,7 +33475,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55566" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57454" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
