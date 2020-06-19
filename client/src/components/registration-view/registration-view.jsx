@@ -25,15 +25,18 @@ export function RegistrationView(props) {
       }).then((response) => {
         const data = response.data;
         console.log(data);
-        alert('Your account has been created! Please Login.');
+        alert('Your account has been created - you can now Login.');
       }).catch((e) => {
         console.log('registration error');
       });
+    props.cancelRegistration();
   };
 
   const handleCancellation = () => {
     props.cancelRegistration();
   };
+
+
 
   return (
     <Form className="registration-form">
