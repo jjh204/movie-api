@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
+import './movie-card.scss'
+
 export class MovieCard extends React.Component {
   render() {
     // This is given to the <MovieCard/> component by the outer world
@@ -11,12 +13,12 @@ export class MovieCard extends React.Component {
     const { movie, onClick } = this.props;
 
     return (
-      <Card style={{ width: '16rem' }}>
+      <Card style={{ width: '22rem' }} className="movie-card">
         <Card.Img variant="top" src={movie.ImagePath} />
         <Card.Body>
-          <Card.Title>{movie.Title}</Card.Title>
+          <Card.Title>{movie.Title + ' - ' + movie.Released}</Card.Title>
           <Card.Text>{movie.Description}</Card.Text>
-          <Button onClick={() => onClick(movie)} variant="link">Open</Button>
+          <Button onClick={() => onClick(movie)} variant="link" className="expand-movie">Details</Button>
         </Card.Body>
       </Card>
     );
