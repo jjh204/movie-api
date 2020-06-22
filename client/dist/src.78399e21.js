@@ -33288,10 +33288,25 @@ var MainView = /*#__PURE__*/function (_React$Component) {
   _createClass(MainView, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var accessToken = localStorage.getItem('token');
+
+      if (accessToken !== null) {
+        this.setState({
+          user: localStorage.getItem('user')
+        });
+        this.getMovies(accessToken);
+      }
+    }
+  }, {
+    key: "getMovies",
+    value: function getMovies(token) {
       var _this2 = this;
 
-      _axios.default.get('https://superflix-api.herokuapp.com/movies').then(function (response) {
-        // assign the result to the state
+      _axios.default.get('https://superflix-api.herokuapp.com/movies', {
+        headers: {
+          Authorization: 'Bearer ${token}'
+        }
+      }).then(function (response) {
         _this2.setState({
           movies: response.data
         });
@@ -33325,23 +33340,6 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       this.getMovies(authData.token);
     }
   }, {
-    key: "getMovies",
-    value: function getMovies(token) {
-      var _this3 = this;
-
-      _axios.default.get('https://superflix-api.herokuapp.com/movies', {
-        headers: {
-          Authorization: 'Bearer ${token}'
-        }
-      }).then(function (response) {
-        _this3.setState({
-          movies: response.data
-        });
-      }).catch(function (error) {
-        console.log(error);
-      });
-    }
-  }, {
     key: "onRegistration",
     value: function onRegistration() {
       this.setState({
@@ -33358,7 +33356,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this3 = this;
 
       // if state not initialized this will throw on runtime
       // before the data is initially loaded
@@ -33369,15 +33367,15 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           register = _this$state.register;
       if (register) return _react.default.createElement(_registrationView.RegistrationView, {
         cancelRegistration: function cancelRegistration() {
-          return _this4.cancelRegistration();
+          return _this3.cancelRegistration();
         }
       });
       if (!user) return _react.default.createElement(_loginView.LoginView, {
         onLoggedIn: function onLoggedIn(user) {
-          return _this4.onLoggedIn(user);
+          return _this3.onLoggedIn(user);
         },
         onRegistrationClick: function onRegistrationClick() {
-          return _this4.onRegistration();
+          return _this3.onRegistration();
         }
       }); // before the movies have loaded
 
@@ -33389,14 +33387,14 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, selectedMovie ? _react.default.createElement("div", null, _react.default.createElement(_movieView.MovieView, {
         movie: selectedMovie,
         onBackClick: function onBackClick() {
-          return _this4.onBackClick();
+          return _this3.onBackClick();
         }
       })) : movies.map(function (movie) {
         return _react.default.createElement(_movieCard.MovieCard, {
           key: movie._id,
           movie: movie,
           onClick: function onClick(movie) {
-            return _this4.onMovieClick(movie);
+            return _this3.onMovieClick(movie);
           }
         });
       }));
@@ -33505,7 +33503,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63736" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49568" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
