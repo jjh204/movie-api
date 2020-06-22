@@ -21,102 +21,98 @@ export class MainView extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://superflix-api.herokuapp.com/movies')
-      .then((response) => {
-        // assign the result to the state
-        this.setState({
-          movies: response.data
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
       });
-  }
+      this.getMovies(accessToken);
+    }
 
-  onMovieClick(movie) {
-    this.setState({
-      selectedMovie: movie
-    });
-  }
-
-  onBackClick() {
-    this.setState({
-      selectedMovie: null
-    });
-  }
-
-  onLoggedIn(authData) {
-    console.log(authData);
-    this.setState({
-      user: authData.user.Username
-    });
-
-    localStorage.setItem('token', authData.token);
-    localStorage.setItem('user', authData.user.Username);
-    this.getMovies(authData.token);
-  }
-
-  getMovies(token) {
-    axios.get('https://superflix-api.herokuapp.com/movies', {
-      headers: { Authorization: 'Bearer ${token}' }
-    })
-      .then(response => {
-        this.setState({
-          movies: response.data
-        });
+    getMovies(token) {
+      axios.get('https://superflix-api.herokuapp.com/movies', {
+        headers: { Authorization: 'Bearer ${token}' }
       })
-      .catch(function (error) {
-        console.log(error);
+        .then(response => {
+          this.setState({
+            movies: response.data
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+
+    onMovieClick(movie) {
+      this.setState({
+        selectedMovie: movie
       });
-  }
+    }
 
-  onRegistration() {
-    this.setState({
-      register: true
-    });
-  }
+    onBackClick() {
+      this.setState({
+        selectedMovie: null
+      });
+    }
 
-  cancelRegistration() {
-    this.setState({
-      register: false
-    });
-  }
+    onLoggedIn(authData) {
+      console.log(authData);
+      this.setState({
+        user: authData.user.Username
+      });
 
-  render() {
-    // if state not initialized this will throw on runtime
-    // before the data is initially loaded
-    const { movies, selectedMovie, user, register } = this.state;
+      localStorage.setItem('token', authData.token);
+      localStorage.setItem('user', authData.user.Username);
+      this.getMovies(authData.token);
+    }
 
-    if (register) return <RegistrationView cancelRegistration={() => this.cancelRegistration()} />;
+    onRegistration() {
+      this.setState({
+        register: true
+      });
+    }
 
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)}
-      onRegistrationClick={() => this.onRegistration()} />;
+    cancelRegistration() {
+      this.setState({
+        register: false
+      });
+    }
 
-    // before the movies have loaded
-    if (!movies) return <div className="main-view" />;
+    render() {
+      // if state not initialized this will throw on runtime
+      // before the data is initially loaded
+      const { movies, selectedMovie, user, register } = this.state;
 
-    return (
-      <div className="main-view">
-        {selectedMovie ? (
-          <div>
-            <MovieView
-              movie={selectedMovie}
-              onBackClick={() => this.onBackClick()}
-            />
-          </div>
-        ) : (
-            movies.map(movie => (
-              <MovieCard
-                key={movie._id}
-                movie={movie}
-                onClick={movie => this.onMovieClick(movie)}
+      if (register) return <RegistrationView cancelRegistration={() => this.cancelRegistration()} />;
+
+      if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)}
+        onRegistrationClick={() => this.onRegistration()} />;
+
+      // before the movies have loaded
+      if (!movies) return <div className="main-view" />;
+
+      return (
+        <div className="main-view">
+          {selectedMovie ? (
+            <div>
+              <MovieView
+                movie={selectedMovie}
+                onBackClick={() => this.onBackClick()}
               />
-            ))
-          )}
-      </div>
-    );
+            </div>
+          ) : (
+              movies.map(movie => (
+                <MovieCard
+                  key={movie._id}
+                  movie={movie}
+                  onClick={movie => this.onMovieClick(movie)}
+                />
+              ))
+            )}
+        </div>
+      );
+    }
   }
-}
 
 /*MainView.propTypes = {
   none
