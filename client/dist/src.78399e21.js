@@ -32596,11 +32596,11 @@ function RegistrationView(props) {
       var data = response.data;
       console.log(data);
       alert('Your account has been created - you can now Login.');
+      props.cancelRegistration();
     }).catch(function (e) {
       console.log('registration error');
+      alert('There was an error with your registration.');
     });
-
-    props.cancelRegistration();
   };
 
   var handleCancellation = function handleCancellation() {
@@ -33516,7 +33516,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56168" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57745" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
