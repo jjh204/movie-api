@@ -13,7 +13,7 @@ const app = express();
 // adding cors (express) for cross origin authentication
 const cors = require('cors');
 // this restricts the origins allowed to the list below
-let allowedOrigins = ['http://localhost:8080/', 'http://localhost:1234/', 'https://superflix-api.herokuapp.com/', 'https://superflix-api.herokuapp.com/movies'];
+let allowedOrigins = ['http://localhost:8080/', 'http://localhost:1234/', 'https://superflix-api.herokuapp.com/'];
 
 app.use(cors({
   origin: (origin, callback) => {
@@ -31,8 +31,8 @@ require('./passport');
 
 const { check, validationResult } = require('express-validator');
 
-/*mongoose.connect('mongodb://localhost:27017/SFlixDatabase', { useNewUrlParser: true, useUnifiedTopology: true });*/
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/SFlixDatabase', { useNewUrlParser: true, useUnifiedTopology: true });
+/* mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });*/
 
 app.use(morgan('common'));
 app.use(bodyParser.json());
