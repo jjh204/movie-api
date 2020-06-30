@@ -11,6 +11,8 @@ const Users = Models.User;
 const app = express();
 
 const cors = require('cors');
+/* app.use(cors()); */
+
 // this restricts the origins allowed to the list below
 let allowedOrigins = ['http://localhost:8080/', 'http://localhost:1234/', 'https://superflix-api.herokuapp.com/'];
 
