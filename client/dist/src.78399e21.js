@@ -33306,7 +33306,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
       _axios.default.get('https://superflix-api.herokuapp.com/movies', {
         headers: {
-          Authorization: 'Bearer ${token}'
+          Authorization: "Bearer ".concat(token)
         }
       }).then(function (response) {
         _this2.setState({
@@ -33505,7 +33505,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50374" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50716" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
