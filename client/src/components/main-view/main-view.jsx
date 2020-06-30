@@ -69,11 +69,6 @@ export class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
-  onLogOut() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-  }
-
   onRegistration() {
     this.setState({
       register: true
@@ -101,7 +96,6 @@ export class MainView extends React.Component {
 
     return (
       <div className="main-view">
-        <Button onClick={onLogOut} variant="dark" type="submit" className="button">Log Out</Button>
         {selectedMovie ? (
           <div>
             <MovieView
