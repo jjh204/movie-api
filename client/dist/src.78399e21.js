@@ -33393,7 +33393,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       return _react.default.createElement("div", {
         className: "main-view"
       }, _react.default.createElement(_Button.default, {
-        onClick: onLogOut,
+        onClick: this.onLogOut,
         variant: "dark",
         type: "submit",
         className: "button"
@@ -33516,7 +33516,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51269" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51399" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
