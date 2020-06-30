@@ -1,8 +1,8 @@
-const express = require('../express'),
-  morgan = require('../morgan'),
-  bodyParser = require('../body-parser'),
-  uuid = require('../uuid'),
-  mongoose = require('../mongoose'),
+const express = require('express'),
+  morgan = require('morgan'),
+  bodyParser = require('body-parser'),
+  uuid = require('uuid'),
+  mongoose = require('mongoose'),
   Models = require('./models.js');
 
 const Movies = Models.Movie;
@@ -10,10 +10,10 @@ const Users = Models.User;
 
 const app = express();
 
-const cors = require('../cors');
+const cors = require('cors');
 app.use(cors());
 
-const passport = require('../passport');
+const passport = require('passport');
 require('./passport');
 
 const { check, validationResult } = require('express-validator');
