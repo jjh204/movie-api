@@ -33346,6 +33346,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function onLogOut() {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
+      window.location.reload();
     }
   }, {
     key: "onRegistration",
@@ -33516,7 +33517,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51399" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51877" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
