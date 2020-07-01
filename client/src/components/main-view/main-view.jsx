@@ -72,6 +72,7 @@ export class MainView extends React.Component {
   onLogOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    window.location.reload();
   }
 
   onRegistration() {
