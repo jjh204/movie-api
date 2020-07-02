@@ -24,6 +24,12 @@ export class ProfileView extends React.Component {
     };
   }
 
+  formatDate(date) {
+    if (date) date = date.toString().substring(0, 10);
+    const newDate = date.split('-').reverse().join('-');
+    return newDate;
+  }
+
   componentDidMount() {
     const accessToken = localStorage.getItem('token');
     this.getUser(accessToken);
@@ -39,7 +45,7 @@ export class ProfileView extends React.Component {
         Username: res.data.Username,
         Password: res.data.Password,
         Email: res.data.Email,
-        Birthday: res.data.Birthday,
+        Birthday: this.formatDate(res.data.Birthday),
         Favorites: res.data.Favorites
       });
     }).catch(function (err) {
@@ -63,29 +69,23 @@ export class ProfileView extends React.Component {
               <Card.Text>Username: {this.state.Username}</Card.Text>
               <Card.Text>Password: xxxxxx</Card.Text>
               <Card.Text>Email: {this.state.Email}</Card.Text>
-              <Card.Text>Birthday {this.state.Birthday}</Card.Text>
+              <Card.Text>Birthday: {this.state.Birthday}</Card.Text>
               Favorite Movies:
-              {favoriteMovieList.map((movie) => (
+                {favoriteMovieList.map((movie) => (
                 <div key={movie._id} className="fav-movies-button">
                   <Link to={`/movies/${movie._id}`}>
                     <Button variant="link">{movie.Title}</Button>
                   </Link>
-                  <Button
-                    size="sm"
-                    onClick={(e) => this.deleteFavoriteMovie(movie._id)}
-                  >
-                    Remove Favorite
-                  </Button>
-                </div>
-              ))}
+                  <Button size="sm" onClick={(e) => this.deleteFavoriteMovie(movie._id)}>Remove Favorite</Button>
+                </div>))}
               <br />
               <br />
               <Link to={'/user/update'}>
-                <Button variant="primary">Update Profile</Button>
+                <Button size="sm" variant="outline-primary">Update Profile</Button>
                 <br />
                 <br />
               </Link>
-              <Button onClick={() => this.deleteUser()}>Delete Profile</Button>
+              <Button onClick={() => this.deleteUser()} size="sm" variant="dark">Delete Profile</Button>
               <br />
               <br />
               <Link to={`/`}>Back</Link>
