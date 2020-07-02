@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
+import { Link } from "react-router-dom";
+
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-
 import './login-view.scss';
 
 export function LoginView(props) {
@@ -27,21 +28,16 @@ export function LoginView(props) {
       });
   };
 
-  const handleRegistration = (e) => {
-    e.preventDefault();
-    props.onRegistrationClick();
-  }
-
   return (
     <Form className="login-form">
       <Form.Group controlId="formBasicUsername" className="login-item">
         <Form.Label>Username:</Form.Label>
-        <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter Username" />
+        <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter username" required />
       </Form.Group>
 
       <Form.Group controlId="formBasicPassword" className="login-item">
         <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Enter Password" />
+        <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Enter password" required />
       </Form.Group>
 
       <Form.Group controlId="formBasicCheckbox" className="login-item">
@@ -49,7 +45,9 @@ export function LoginView(props) {
       </Form.Group>
 
       <Button onClick={handleSubmit} variant="primary" type="submit" className="button" >Login</Button>
-      <Button onClick={handleRegistration} variant="info" type="submit" className="button">Register</Button>
+      <Link to={"/register"}>
+        <Button variant="info" className="button">Register</Button>
+      </Link>
     </Form>
   );
 }
@@ -60,5 +58,4 @@ LoginView.propTypes = {
     Password: PropTypes.string.isRequired
   }),
   onLoggedIn: PropTypes.func.isRequired,
-  onRegistrationClick: PropTypes.func.isRequired
 };
