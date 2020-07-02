@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from 'react-bootstrap/Button';
+import { Link } from "react-router-dom";
 
+import Button from 'react-bootstrap/Button';
 import './movie-view.scss';
 
 export class MovieView extends React.Component {
@@ -14,7 +15,7 @@ export class MovieView extends React.Component {
   }
 
   render() {
-    const { movie, onBackClick } = this.props;
+    const { movie } = this.props;
 
     if (!movie) return null;
 
@@ -47,7 +48,9 @@ export class MovieView extends React.Component {
             <span className="value">{movie.Staring + ','}</span>
           </div>
         </section>
-        <Button onClick={onBackClick} variant="dark" type="submit" className="button" >Back</Button>
+        <Link to={"/"}>
+          <Button variant="dark" className="button">Back</Button>
+        </Link>
       </div>
     );
   }
