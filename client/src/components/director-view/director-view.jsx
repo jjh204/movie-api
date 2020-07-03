@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Link } from "react-router-dom";
 
+import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import './director-view.scss';
 
@@ -20,25 +21,17 @@ export class DirectorView extends React.Component {
     if (!director) return null;
 
     return (
-      <div className="director-view">
-        <section className="director-container">
-          <div className="director-name">
-            <span className="label">Director: </span>
-            <span className="value">{director.Name}</span>
-          </div>
-          <div className="director-bio">
-            <span className="label">Bio: </span>
-            <span className="value">{director.Bio}</span>
-          </div>
-          <div className="director-birth">
-            <span className="label">Birth: </span>
-            <span className="value">{director.Birth}</span>
-          </div>
-        </section>
-        <Link to={"/"}>
-          <Button variant="link" className="button">Back</Button>
-        </Link>
-      </div>
+      <Card style={{ width: '35rem' }} className="director-card">
+        <Card.Img variant="top" src='https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80' />
+        <Card.Body>
+          <Card.Title>{director.Name}</Card.Title>
+          <Card.Text>Born: {director.Birth}</Card.Text>
+          <Card.Text>Bio: {director.Bio}</Card.Text>
+          <Link to={"/"}>
+            <Button variant="link" className="button">Back</Button>
+          </Link>
+        </Card.Body>
+      </Card>
     );
   }
 }
