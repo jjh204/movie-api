@@ -11,6 +11,7 @@ import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { ProfileView } from '../profile-view/profile-view';
+import { ProfileUpdate } from '../profile-update/profile-update';
 
 import Button from 'react-bootstrap/Button';
 import './main-view.scss';
@@ -81,14 +82,13 @@ export class MainView extends React.Component {
           <Button variant="info" className="button">Profile</Button>
         </Link>
         <Button onClick={this.onLogOut} variant="dark" type="submit" className="button"> Log Out</Button>
+        <Route exact path="/" render={() => {
+          if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+          return movies.map(m => <MovieCard key={m._id} movie={m} />)
+        }} />
+
         <div className="main-view">
-          <Route exact path="/" render={() => {
-            if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-            return movies.map(m => <MovieCard key={m._id} movie={m} />)
-          }} />
-
           <Route exact path="/register" render={() => <RegistrationView />} />
-
           <Route path="/movies/:movieId" render={({ match }) => <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
 
           <Route path="/directors/:name" render={({ match }) => {
@@ -96,10 +96,12 @@ export class MainView extends React.Component {
             return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
           }} />
           <Route path="/genres/:name" render={({ match }) => {
+
             if (!movies) return <div className="main-view" />;
             return <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />
           }} />
           <Route exact path="/users/:userId" render={() => <ProfileView movies={movies} />} />
+          <Route exact path="/users/:userId/update" render={() => <ProfileUpdate movies={movies} />} />
         </div>
       </Router>
     );
