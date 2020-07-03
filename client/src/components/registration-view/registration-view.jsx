@@ -23,8 +23,8 @@ export function RegistrationView(props) {
         Password: password,
         Email: email,
         Birthday: birthday
-      }).then((response) => {
-        const data = response.data;
+      }).then((res) => {
+        const data = res.data;
         console.log(data);
         alert('Your account has been created - you can now Login.');
         window.open('/', '_self');
@@ -44,14 +44,6 @@ export function RegistrationView(props) {
       </Form.Text>
       </Form.Group>
 
-      <Form.Group controlId="formBasicEmail" className="registration-item">
-        <Form.Label>Email:</Form.Label>
-        <Form.Control type="email" value={email} onChange={e => createEmail(e.target.value)} placeholder="Enter valid email" />
-        <Form.Text className="text-muted">
-          We'll never share your private details with anyone else
-      </Form.Text>
-      </Form.Group>
-
       <Form.Group controlId="formBasicpassword" className="registration-item">
         <Form.Label>Password:</Form.Label>
         <Form.Control type="password" value={password} onChange={e => createPassword(e.target.value)} placeholder="Create password" />
@@ -60,13 +52,17 @@ export function RegistrationView(props) {
       </Form.Text>
       </Form.Group>
 
+      <Form.Group controlId="formBasicEmail" className="registration-item">
+        <Form.Label>Email:</Form.Label>
+        <Form.Control type="email" value={email} onChange={e => createEmail(e.target.value)} placeholder="Enter valid email" />
+      </Form.Group>
+
       <Form.Group controlId="formBasicBirthday" className="registration-item">
         <Form.Label>Birthday:</Form.Label>
         <Form.Control type="date" value={birthday} onChange={e => createBirthday(e.target.value)} />
-        <Form.Text className="text-muted">
-          We'll never share your private details with anyone else
-      </Form.Text>
       </Form.Group>
+
+      <p>We'll never share your private details with anyone else.</p>
 
       <Button onClick={handleRegister} variant="primary" type="submit" className="button" >Submit</Button>
       <Link to={"/"}>
