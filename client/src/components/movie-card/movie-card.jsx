@@ -13,7 +13,7 @@ export class MovieCard extends React.Component {
     // This is given to the <MovieCard/> component by the outer world
     // which, in this case, is `MainView`, as `MainView` is what’s
     // connected to your database via the movies endpoint of the API
-    const { movie, onLogOut } = this.props;
+    const { movie } = this.props;
 
     return (
       <Card style={{ width: '22rem' }} className="movie-card">
