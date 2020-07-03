@@ -36,9 +36,9 @@ export class ProfileView extends React.Component {
   }
 
   getUser(token) {
-    const username = localStorage.getItem('user');
+    const userId = localStorage.getItem('user');
 
-    axios.get(`https://superflix-api.herokuapp.com/users/${username}`, {
+    axios.get(`https://superflix-api.herokuapp.com/users/${userId}`, {
       headers: { Authorization: `Bearer ${token}` }
     }).then((res) => {
       this.setState({
@@ -53,42 +53,36 @@ export class ProfileView extends React.Component {
     });
   }
 
+  deleteUser() {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('user');
+    if (!confirm('Are you sure you want to continue?')) return;
+    axios.delete(`https://superflix-api.herokuapp.com/users/${userId}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    }).then((res) =>
+      console.log(res));
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    window.open('/', '_self');
+  }
+
   render() {
     const { movies } = this.props;
-    const favoriteMovieList = movies.filter((movie) =>
-      this.state.favorites.includes(movie._id)
-    );
 
     return (
       <div>
         <Container>
           <h1>Welcome {this.state.Username}!</h1>
-          <br />
-          <Card>
+          <Card style={{ width: '60rem' }} className="profile-view">
             <Card.Body>
+              <Link to={`/`} className="profile-back">Back</Link>
               <Card.Text>Username: {this.state.Username}</Card.Text>
-              <Card.Text>Password: xxxxxx</Card.Text>
               <Card.Text>Email: {this.state.Email}</Card.Text>
               <Card.Text>Birthday: {this.state.Birthday}</Card.Text>
-              Favorite Movies:
-                {favoriteMovieList.map((movie) => (
-                <div key={movie._id} className="fav-movies-button">
-                  <Link to={`/movies/${movie._id}`}>
-                    <Button variant="link">{movie.Title}</Button>
-                  </Link>
-                  <Button size="sm" onClick={(e) => this.deleteFavoriteMovie(movie._id)}>Remove Favorite</Button>
-                </div>))}
-              <br />
-              <br />
-              <Link to={'/user/update'}>
+              <Link to={'/users/:userId/update'}>
                 <Button size="sm" variant="outline-primary">Update Profile</Button>
-                <br />
-                <br />
               </Link>
-              <Button onClick={() => this.deleteUser()} size="sm" variant="dark">Delete Profile</Button>
-              <br />
-              <br />
-              <Link to={`/`}>Back</Link>
+              <Button onClick={() => this.deleteUser()} size="sm" variant="outline-dark">Delete Profile</Button>
             </Card.Body>
           </Card>
         </Container>
