@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Link } from "react-router-dom";
 
+import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import './movie-view.scss';
 
@@ -14,44 +15,39 @@ export class MovieView extends React.Component {
     this.state = {};
   }
 
+  formatStaring(staring) {
+    if (staring) staring = staring.join(', ');
+    return staring;
+  }
+
   render() {
     const { movie } = this.props;
 
     if (!movie) return null;
 
     return (
-      <div className="movie-view">
-        <img className="movie-poster" src={movie.ImagePath} />
-        <section className="movie-container">
-          <div className="movie-title">
-            <span className="label">Title: </span>
-            <span className="value">{movie.Title}</span>
-          </div>
-          <div className="movie-released">
-            <span className="label">Released: </span>
-            <span className="value">{movie.Released}</span>
-          </div>
-          <div className="movie-description">
-            <span className="label">Description: </span>
-            <span className="value">{movie.Description}</span>
-          </div>
-          <div className="movie-genre">
-            <span className="label">Genre: </span>
-            <span className="value">{movie.Genre.Name}</span>
-          </div>
-          <div className="movie-director">
-            <span className="label">Director: </span>
-            <span className="value">{movie.Director.Name}</span>
-          </div>
-          <div className="movie-staring">
-            <span className="label">Staring: </span>
-            <span className="value">{movie.Staring + ','}</span>
-          </div>
-        </section>
-        <Link to={"/"}>
-          <Button variant="dark" className="button">Back</Button>
-        </Link>
-      </div>
+      <Card style={{ width: '50rem' }} className="movie-view">
+        <Card.Img variant="top" src={movie.ImagePath} />
+        <Card.Body className="movie-view-body">
+          <Card.Title>{movie.Title}</Card.Title>
+          <Card.Text>Released: {movie.Released}</Card.Text>
+          <Card.Text>Description: {movie.Description}</Card.Text>
+          <Card.Text>Director:
+            <Link to={`/directors/${movie.Director.Name}`}>
+              <Button variant="link">{movie.Director.Name}</Button>
+            </Link>
+          </Card.Text>
+          <Card.Text>Genre:
+            <Link to={`/genres/${movie.Genre.Name}`}>
+              <Button variant="link">{movie.Genre.Name}</Button>
+            </Link>
+          </Card.Text>
+          <Card.Text>Staring: {this.formatStaring(movie.Staring)}</Card.Text>
+          <Link to={"/"}>
+            <Button variant="link" className="movie-view-back-button">Back</Button>
+          </Link>
+        </Card.Body>
+      </Card>
     );
   }
 }
@@ -73,5 +69,5 @@ MovieView.propTypes = {
     }),
     Staring: PropTypes.array.isRequired,
     Featured: PropTypes.bool.isRequired
-  }).isRequired,
+  })
 };
