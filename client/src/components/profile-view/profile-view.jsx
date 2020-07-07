@@ -24,15 +24,15 @@ export class ProfileView extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const accessToken = localStorage.getItem('token');
+    this.getUser(accessToken);
+  }
+
   formatDate(date) {
     if (date) date = date.toString().substring(0, 10);
     const newDate = date.split('-').reverse().join('-');
     return newDate;
-  }
-
-  componentDidMount() {
-    const accessToken = localStorage.getItem('token');
-    this.getUser(accessToken);
   }
 
   getUser(token) {
