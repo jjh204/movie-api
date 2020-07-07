@@ -53,10 +53,9 @@ export class ProfileView extends React.Component {
     });
   }
 
-  deleteUser() {
-    const token = localStorage.getItem('token');
+  deleteUser(token) {
     const userId = localStorage.getItem('user');
-    if (!confirm('Are you sure you want to continue?')) return;
+    if (!confirm('Are you sure you want to delete your profile?')) return;
     axios.delete(`https://superflix-api.herokuapp.com/users/${userId}`, {
       headers: { Authorization: `Bearer ${token}` }
     }).then((res) =>
