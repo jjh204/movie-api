@@ -24,6 +24,7 @@ export function LoginView(props) {
         props.onLoggedIn(data);
       })
       .catch(e => {
+        alert('This username does not exist.')
         console.log('no such user')
       });
   };
