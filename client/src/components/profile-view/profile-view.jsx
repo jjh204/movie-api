@@ -65,8 +65,22 @@ export class ProfileView extends React.Component {
     window.open('/', '_self');
   }
 
+  deleteFavorites(movie) {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('user');
+    axios.delete(`https://superflix-api.herokuapp.com/users/${userId}/Favorites/${movie._id}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    }).then((res) => {
+      console.log(res);
+      this.componentDidMount();
+    });
+  }
+
   render() {
     const { movies } = this.props;
+    const favoritesList = movies.filter((movie) => {
+      this.state.Favorites.includes(movie);
+    });
 
     return (
       <div>
@@ -84,6 +98,21 @@ export class ProfileView extends React.Component {
               <Button onClick={() => this.deleteUser()} size="sm" variant="outline-dark">Delete Profile</Button>
             </Card.Body>
           </Card>
+          <div>
+            <h1>Favorite Movies:</h1>
+            {favoritesList.map((movie) => {
+              return (
+                <div key={movie._id} className="fav-movies-button">
+                  <Link to={`/movies/${movie._id}`}>
+                    <Button variant="link">{movie.Title}</Button>
+                  </Link>
+                  <Button size="sm" onClick={() => this.deleteFavorites(movie)}>
+                    Remove Favorite
+                  </Button>
+                </div>
+              );
+            })}
+          </div>
         </Container>
       </div>
     );
