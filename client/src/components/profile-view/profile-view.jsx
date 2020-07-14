@@ -78,9 +78,9 @@ export class ProfileView extends React.Component {
 
   render() {
     const { movies } = this.props;
-    const favoritesList = movies.filter((movie) => {
-      this.state.Favorites.includes(movie);
-    });
+    /* const favoritesList = movies.filter((movie) => {
+       this.state.Favorites.includes(movie);
+     }); */
 
     return (
       <div>
@@ -100,7 +100,7 @@ export class ProfileView extends React.Component {
           </Card>
           <div>
             <h1>Favorite Movies:</h1>
-            {favoritesList.map((movie) => {
+            {/* {favoritesList.map((movie) => {
               return (
                 <div key={movie._id} className="fav-movies-button">
                   <Link to={`/movies/${movie._id}`}>
@@ -111,7 +111,7 @@ export class ProfileView extends React.Component {
                   </Button>
                 </div>
               );
-            })}
+            })} */}
           </div>
         </Container>
       </div>
