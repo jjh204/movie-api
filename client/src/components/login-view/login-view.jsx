@@ -49,9 +49,9 @@ export function LoginView(props) {
         <Form.Check type="checkbox" label="Check if you're ready to SuperFlix!" />
       </Form.Group>
 
-      <Button onClick={handleSubmit} variant="primary" type="submit" className="button" >Login</Button>
+      <Button onClick={handleSubmit} variant="danger" type="submit" className="button" >Login</Button>
       <Link to={"/register"}>
-        <Button variant="info" className="button">Register</Button>
+        <Button variant="outline-light" className="button">Register</Button>
       </Link>
     </Form>
   );

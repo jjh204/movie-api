@@ -38515,13 +38515,13 @@ function RegistrationView(props) {
     }
   })), _react.default.createElement("p", null, "We'll never share your private details with anyone else."), _react.default.createElement(_Button.default, {
     onClick: handleRegister,
-    variant: "primary",
+    variant: "light",
     type: "submit",
     className: "button"
   }, "Submit"), _react.default.createElement(_reactRouterDom.Link, {
     to: "/"
   }, _react.default.createElement(_Button.default, {
-    variant: "outline-primary",
+    variant: "outline-light",
     className: "button"
   }, "Cancel")));
 }
@@ -38640,13 +38640,13 @@ function LoginView(props) {
     label: "Check if you're ready to SuperFlix!"
   })), _react.default.createElement(_Button.default, {
     onClick: handleSubmit,
-    variant: "primary",
+    variant: "danger",
     type: "submit",
     className: "button"
   }, "Login"), _react.default.createElement(_reactRouterDom.Link, {
     to: "/register"
   }, _react.default.createElement(_Button.default, {
-    variant: "info",
+    variant: "outline-light",
     className: "button"
   }, "Register")));
 }
@@ -39827,7 +39827,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54476" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54553" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

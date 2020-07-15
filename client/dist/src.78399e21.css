@@ -9,7 +9,7 @@
 .registration-form {
   margin: 0 auto;
   text-align: left;
-  max-width: 500px;
+  max-width: 600px;
   padding: 50px;
 }
 
@@ -17,10 +17,20 @@
   margin: 20px;
 }
 
+.privacy-text {
+  text-align: left;
+}
+
 .button {
   margin: 20px;
   width: 150px;
 }
+body {
+  background: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+  background-size: cover;
+  color: white;
+}
+
 .login-form {
   margin: 0 auto;
   text-align: left;
