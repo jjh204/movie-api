@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
+import { connect } from 'react-redux';
+import { setUser } from '../../actions/actions';
+
 import { Link } from "react-router-dom";
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './login-view.scss';
+
 
 export function LoginView(props) {
   const [username, setUsername] = useState('');
@@ -19,13 +23,13 @@ export function LoginView(props) {
       Username: username,
       Password: password
     })
-      .then(response => {
-        const data = response.data;
+      .then((res) => {
+        const data = res.data;
         props.onLoggedIn(data);
       })
       .catch(e => {
-        alert('This username does not exist.')
-        console.log('no such user')
+        alert('Error logging in');
+        console.log('Error');
       });
   };
 
@@ -33,12 +37,12 @@ export function LoginView(props) {
     <Form className="login-form">
       <Form.Group controlId="formBasicUsername" className="login-item">
         <Form.Label>Username:</Form.Label>
-        <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter username" required />
+        <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter username" />
       </Form.Group>
 
       <Form.Group controlId="formBasicPassword" className="login-item">
         <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Enter password" required />
+        <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Enter password" />
       </Form.Group>
 
       <Form.Group controlId="formBasicCheckbox" className="login-item">
@@ -60,3 +64,5 @@ LoginView.propTypes = {
   }),
   onLoggedIn: PropTypes.func.isRequired,
 };
+
+export default connect(null, { setUser })(LoginView);
