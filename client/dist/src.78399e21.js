@@ -39181,12 +39181,10 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       var _this4 = this;
 
       var movies = this.props.movies;
-      var userFavorites = this.state.Favorites; // not filtering properly yet
-
+      var userFavorites = this.state.Favorites;
       var favoritesList = movies.filter(function (movie) {
-        return movie._id.includes(userFavorites);
+        return userFavorites.includes(movie._id);
       });
-      console.log(movies, favoritesList);
       return _react.default.createElement("div", null, _react.default.createElement(_Container.default, null, _react.default.createElement("h1", null, "Welcome ", this.state.Username, "!"), _react.default.createElement(_Card.default, {
         style: {
           width: '60rem'
@@ -39514,6 +39512,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         /* this.setState({
            user: localStorage.getItem('user'),
          }); */
+        this.props.setUser(localStorage.getItem('user'));
         this.getMovies(accessToken);
       }
     }
@@ -39833,7 +39832,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59101" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50642" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
