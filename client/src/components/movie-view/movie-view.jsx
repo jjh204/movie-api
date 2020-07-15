@@ -32,16 +32,8 @@ export class MovieView extends React.Component {
           <Card.Title>{movie.Title}</Card.Title>
           <Card.Text>Released: {movie.Released}</Card.Text>
           <Card.Text>Description: {movie.Description}</Card.Text>
-          <Card.Text>Director:
-            <Link to={`/directors/${movie.Director.Name}`}>
-              <Button variant="link">{movie.Director.Name}</Button>
-            </Link>
-          </Card.Text>
-          <Card.Text>Genre:
-            <Link to={`/genres/${movie.Genre.Name}`}>
-              <Button variant="link">{movie.Genre.Name}</Button>
-            </Link>
-          </Card.Text>
+          <Card.Text>Director: {movie.Director.Name}</Card.Text>
+          <Card.Text>Genre: {movie.Genre.Name}</Card.Text>
           <Card.Text>Staring: {this.formatStaring(movie.Staring)}</Card.Text>
           <Link to={"/"}>
             <Button variant="link" className="movie-view-back-button">Back</Button>
@@ -60,7 +52,8 @@ MovieView.propTypes = {
     Released: PropTypes.string.isRequired,
     Genre: PropTypes.shape({
       Name: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired
+      Description: PropTypes.string.isRequired,
+      Img: PropTypes.string.isRequired
     }),
     Director: PropTypes.shape({
       Name: PropTypes.string.isRequired,

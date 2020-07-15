@@ -28,7 +28,7 @@ export class MovieCard extends React.Component {
     const { movie } = this.props;
 
     return (
-      <Card style={{ width: '22rem' }} className="movie-card">
+      <Card style={{ width: '25rem' }} className="movie-card">
         <Card.Img variant="top" src={movie.ImagePath} />
         <Card.Body>
           <Card.Title>{movie.Title + ' - ' + movie.Released}</Card.Title>
@@ -43,7 +43,7 @@ export class MovieCard extends React.Component {
             <Button variant="link">Genre</Button>
           </Link>
           <Button variant="link" onClick={() => this.addToFavorites(movie)}>
-            Add to Favorites
+            Favorite
     </Button>
         </Card.Body>
       </Card>
@@ -59,7 +59,8 @@ MovieCard.propTypes = {
     Released: PropTypes.string.isRequired,
     Genre: PropTypes.shape({
       Name: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired
+      Description: PropTypes.string.isRequired,
+      Img: PropTypes.string.isRequired
     }),
     Director: PropTypes.shape({
       Name: PropTypes.string.isRequired,

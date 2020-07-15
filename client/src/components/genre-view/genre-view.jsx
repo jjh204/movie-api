@@ -22,7 +22,7 @@ export class GenreView extends React.Component {
 
     return (
       <Card style={{ width: '35rem' }} className="genre-card">
-        <Card.Img variant="top" src='https://images.unsplash.com/photo-1503095396549-807759245b35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80' />
+        <Card.Img variant="top" src={genre.Img} />
         <Card.Body>
           <Card.Title>{genre.Name}</Card.Title>
           <Card.Text>Description: {genre.Description}</Card.Text>
@@ -38,6 +38,7 @@ export class GenreView extends React.Component {
 GenreView.propTypes = {
   Genre: PropTypes.shape({
     Name: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired
+    Description: PropTypes.string.isRequired,
+    Img: PropTypes.string.isRequired
   })
 };

@@ -87,11 +87,11 @@ export class MainView extends React.Component {
 
     return (
       <Router>
-        <Link to={"/users/:userId"}>
-          <Button variant="info" className="button">Profile</Button>
-        </Link>
-        <Button onClick={this.onLogOut} variant="dark" type="submit" className="button"> Log Out</Button>
         <div className="main-view">
+          <Link to={"/users/:userId"}>
+            <Button variant="info" className="button">Profile</Button>
+          </Link>
+          <Button onClick={this.onLogOut} variant="dark" type="submit" className="button"> Log Out</Button>
           <Route exact path="/" render={() => {
             if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
             return <MoviesList movies={movies} />;
