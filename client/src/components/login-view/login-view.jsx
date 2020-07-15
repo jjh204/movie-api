@@ -28,7 +28,7 @@ export function LoginView(props) {
         props.onLoggedIn(data);
       })
       .catch(e => {
-        alert('Error logging in');
+        alert('This username or password does not exist');
         console.log('Error');
       });
   };
