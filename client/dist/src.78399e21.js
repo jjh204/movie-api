@@ -38277,7 +38277,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       var movie = this.props.movie;
       return _react.default.createElement(_Card.default, {
         style: {
-          width: '22rem'
+          width: '25rem'
         },
         className: "movie-card"
       }, _react.default.createElement(_Card.default.Img, {
@@ -38300,7 +38300,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this.addToFavorites(movie);
         }
-      }, "Add to Favorites")));
+      }, "Favorite")));
     }
   }]);
 
@@ -38316,7 +38316,8 @@ MovieCard.propTypes = {
     Released: _propTypes.default.string.isRequired,
     Genre: _propTypes.default.shape({
       Name: _propTypes.default.string.isRequired,
-      Description: _propTypes.default.string.isRequired
+      Description: _propTypes.default.string.isRequired,
+      Img: _propTypes.default.string.isRequired
     }),
     Director: _propTypes.default.shape({
       Name: _propTypes.default.string.isRequired,
@@ -38604,7 +38605,7 @@ function LoginView(props) {
       var data = res.data;
       props.onLoggedIn(data);
     }).catch(function (e) {
-      alert('Error logging in');
+      alert('This username or password does not exist');
       console.log('Error');
     });
   };
@@ -38748,15 +38749,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         src: movie.ImagePath
       }), _react.default.createElement(_Card.default.Body, {
         className: "movie-view-body"
-      }, _react.default.createElement(_Card.default.Title, null, movie.Title), _react.default.createElement(_Card.default.Text, null, "Released: ", movie.Released), _react.default.createElement(_Card.default.Text, null, "Description: ", movie.Description), _react.default.createElement(_Card.default.Text, null, "Director:", _react.default.createElement(_reactRouterDom.Link, {
-        to: "/directors/".concat(movie.Director.Name)
-      }, _react.default.createElement(_Button.default, {
-        variant: "link"
-      }, movie.Director.Name))), _react.default.createElement(_Card.default.Text, null, "Genre:", _react.default.createElement(_reactRouterDom.Link, {
-        to: "/genres/".concat(movie.Genre.Name)
-      }, _react.default.createElement(_Button.default, {
-        variant: "link"
-      }, movie.Genre.Name))), _react.default.createElement(_Card.default.Text, null, "Staring: ", this.formatStaring(movie.Staring)), _react.default.createElement(_reactRouterDom.Link, {
+      }, _react.default.createElement(_Card.default.Title, null, movie.Title), _react.default.createElement(_Card.default.Text, null, "Released: ", movie.Released), _react.default.createElement(_Card.default.Text, null, "Description: ", movie.Description), _react.default.createElement(_Card.default.Text, null, "Director: ", movie.Director.Name), _react.default.createElement(_Card.default.Text, null, "Genre: ", movie.Genre.Name), _react.default.createElement(_Card.default.Text, null, "Staring: ", this.formatStaring(movie.Staring)), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
         variant: "link",
@@ -38777,7 +38770,8 @@ MovieView.propTypes = {
     Released: _propTypes.default.string.isRequired,
     Genre: _propTypes.default.shape({
       Name: _propTypes.default.string.isRequired,
-      Description: _propTypes.default.string.isRequired
+      Description: _propTypes.default.string.isRequired,
+      Img: _propTypes.default.string.isRequired
     }),
     Director: _propTypes.default.shape({
       Name: _propTypes.default.string.isRequired,
@@ -38961,7 +38955,7 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
         className: "genre-card"
       }, _react.default.createElement(_Card.default.Img, {
         variant: "top",
-        src: "https://images.unsplash.com/photo-1503095396549-807759245b35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80"
+        src: genre.Img
       }), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, genre.Name), _react.default.createElement(_Card.default.Text, null, "Description: ", genre.Description), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
@@ -38978,7 +38972,8 @@ exports.GenreView = GenreView;
 GenreView.propTypes = {
   Genre: _propTypes.default.shape({
     Name: _propTypes.default.string.isRequired,
-    Description: _propTypes.default.string.isRequired
+    Description: _propTypes.default.string.isRequired,
+    Img: _propTypes.default.string.isRequired
   })
 };
 },{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./genre-view.scss":"components/genre-view/genre-view.scss"}],"../node_modules/react-bootstrap/esm/Container.js":[function(require,module,exports) {
@@ -39566,7 +39561,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
       });
-      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_reactRouterDom.Link, {
+      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("div", {
+        className: "main-view"
+      }, _react.default.createElement(_reactRouterDom.Link, {
         to: "/users/:userId"
       }, _react.default.createElement(_Button.default, {
         variant: "info",
@@ -39576,9 +39573,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         variant: "dark",
         type: "submit",
         className: "button"
-      }, " Log Out"), _react.default.createElement("div", {
-        className: "main-view"
-      }, _react.default.createElement(_reactRouterDom.Route, {
+      }, " Log Out"), _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/",
         render: function render() {
@@ -39832,7 +39827,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50642" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52135" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
