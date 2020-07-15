@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 
 import { Link } from "react-router-dom";
 
+import { connect } from 'react-redux';
+import { setUser } from '../../actions/actions';
+
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -33,7 +36,7 @@ export function ProfileUpdate(props) {
     ).then((res) => {
       const data = res.data;
       localStorage.setItem("user", data.Username);
-      alert('Your profile was updated successfully.');
+      alert('Your profile was successfully updated.');
       window.open("/users/:userId", "_self");
     })
       .catch((e) => {
@@ -90,3 +93,5 @@ ProfileUpdate.propTypes = {
     Birthday: PropTypes.instanceOf(Date).isRequired
   })
 };
+
+export default connect(null, { setUser })(ProfileUpdate);
