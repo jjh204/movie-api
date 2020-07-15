@@ -80,11 +80,8 @@ export class ProfileView extends React.Component {
 
   render() {
     const { movies } = this.props;
-    const userFavorites = this.state.Favorites;
-    // not filtering properly yet
-    const favoritesList = movies.filter(movie => movie._id.includes(userFavorites));
-
-    console.log(movies, favoritesList);
+    const userFavorites = this.state.Favorites
+    const favoritesList = movies.filter((movie) => userFavorites.includes(movie._id));
 
     return (
       <div>
