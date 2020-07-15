@@ -62,12 +62,14 @@ export function RegistrationView(props) {
         <Form.Control type="date" value={birthday} onChange={e => createBirthday(e.target.value)} />
       </Form.Group>
 
+      <div className="register-footer">
       <p>We'll never share your private details with anyone else.</p>
 
-      <Button onClick={handleRegister} variant="primary" type="submit" className="button" >Submit</Button>
+      <Button onClick={handleRegister} variant="light" type="submit" className="button" >Submit</Button>
       <Link to={"/"}>
-        <Button variant="outline-primary" className="button">Cancel</Button>
+        <Button variant="outline-light" className="button">Cancel</Button>
       </Link>
+      </div>
     </Form>
   );
 }
