@@ -1,3 +1,11 @@
+.movie-card {
+  margin: 40px;
+  padding: 5px;
+}
+
+.expand-movie {
+  color: #628fcc;
+}
 .registration-form {
   margin: 0 auto;
   text-align: left;
@@ -27,14 +35,6 @@
 .button {
   margin: 20px;
   width: 150px;
-}
-.movie-card {
-  margin: 40px;
-  padding: 5px;
-}
-
-.expand-movie {
-  color: #628fcc;
 }
 .movie-view {
   margin: 50px;
