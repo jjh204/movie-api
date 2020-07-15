@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 
 import { Link } from "react-router-dom";
 
+import { connect } from 'react-redux';
+import { setUser } from '../../actions/actions';
+
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -61,7 +64,6 @@ export class ProfileView extends React.Component {
     }).then((res) =>
       console.log(res));
     localStorage.removeItem('token');
-    localStorage.removeItem('user');
     window.open('/', '_self');
   }
 
@@ -78,9 +80,8 @@ export class ProfileView extends React.Component {
 
   render() {
     const { movies } = this.props;
-    /* const favoritesList = movies.filter((movie) => {
-       this.state.Favorites.includes(movie);
-     }); */
+    const userFavorites = this.state.Favorites
+    const favoritesList = movies.filter((movie) => userFavorites.includes(movie._id));
 
     return (
       <div>
@@ -100,18 +101,23 @@ export class ProfileView extends React.Component {
           </Card>
           <div>
             <h1>Favorite Movies:</h1>
-            {/* {favoritesList.map((movie) => {
+            {favoritesList.map((movie) => {
               return (
-                <div key={movie._id} className="fav-movies-button">
-                  <Link to={`/movies/${movie._id}`}>
-                    <Button variant="link">{movie.Title}</Button>
-                  </Link>
-                  <Button size="sm" onClick={() => this.deleteFavorites(movie)}>
-                    Remove Favorite
+                <Card key={movie._id} style={{ width: '15rem' }} className="fav-movies">
+                  <Card.Img variant="top" src={movie.ImagePath} />
+                  <Card.Body>
+                    <Card.Title>
+                      <Link to={`/movies/${movie._id}`}>
+                        <Button size="lg" variant="link">{movie.Title}</Button>
+                      </Link>
+                    </Card.Title>
+                    <Button size="sm" variant="outline-dark" onClick={() => this.deleteFavorites(movie)}>
+                      Remove
                   </Button>
-                </div>
+                  </Card.Body>
+                </Card>
               );
-            })} */}
+            })}
           </div>
         </Container>
       </div>
@@ -128,3 +134,5 @@ ProfileView.propTypes = {
     Favorites: PropTypes.array
   })
 };
+
+export default connect(null, { setUser })(ProfileView);

@@ -13,7 +13,7 @@ export class MovieCard extends React.Component {
   addToFavorites(movie) {
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('user');
-    axios.post(`https://superflix-api.herokuapp.com/users/${userId}/Favorites/${movie._id}`, {
+    axios.post(`https://superflix-api.herokuapp.com/users/${userId}/Favorites/${movie._id}`, { username: localStorage.getItem('user') }, {
       headers: { Authorization: `Bearer ${token}` },
     }).then((res) => {
       console.log(res);
@@ -44,7 +44,7 @@ export class MovieCard extends React.Component {
           </Link>
           <Button variant="link" onClick={() => this.addToFavorites(movie)}>
             Add to Favorites
-          </Button>
+    </Button>
         </Card.Body>
       </Card>
     );
