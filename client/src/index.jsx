@@ -1,15 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+//below importing redux to create the 'store'
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
 // importing the main-view from directory
-import { MainView } from './components/main-view/main-view';
+import MainView from './components/main-view/main-view';
+import moviesApp from './reducers/reducers';
 
 import './index.scss';
 
-// main componetn that will eventually use all the others
+const store = createStore(moviesApp);
+
+// main component that will eventually use all the others
 class SuperFlixApplication extends React.Component {
   render() {
-    return <MainView />;
+    return (
+      <Provider store={store}>
+        <MainView />
+      </Provider>
+    );
   }
 }
 
