@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { setUser } from '../../actions/actions';
 
-import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import './profile-view.scss';
+import ProfileImage from './profile-image.jpg';
 
 export class ProfileView extends React.Component {
 
@@ -80,46 +80,42 @@ export class ProfileView extends React.Component {
 
   render() {
     const { movies } = this.props;
-    const userFavorites = this.state.Favorites
+    const userFavorites = this.state.Favorites;
     const favoritesList = movies.filter((movie) => userFavorites.includes(movie._id));
 
     return (
       <div>
-        <Container>
-          <h1>Welcome {this.state.Username}!</h1>
-          <Card style={{ width: '60rem' }} className="profile-view">
-            <Card.Body>
-              <Link to={`/`} className="profile-back">Back</Link>
-              <Card.Text>Username: {this.state.Username}</Card.Text>
-              <Card.Text>Email: {this.state.Email}</Card.Text>
-              <Card.Text>Birthday: {this.state.Birthday}</Card.Text>
-              <Link to={'/users/:userId/update'}>
-                <Button size="sm" variant="outline-primary">Update Profile</Button>
-              </Link>
-              <Button onClick={() => this.deleteUser()} size="sm" variant="outline-dark">Delete Profile</Button>
-            </Card.Body>
-          </Card>
-          <div>
-            <h1>Favorite Movies:</h1>
-            {favoritesList.map((movie) => {
-              return (
-                <Card key={movie._id} style={{ width: '15rem' }} className="fav-movies">
-                  <Card.Img variant="top" src={movie.ImagePath} />
-                  <Card.Body>
-                    <Card.Title>
-                      <Link to={`/movies/${movie._id}`}>
-                        <Button size="lg" variant="link">{movie.Title}</Button>
-                      </Link>
-                    </Card.Title>
-                    <Button size="sm" variant="outline-dark" onClick={() => this.deleteFavorites(movie)}>
-                      Remove
+        <h1 className="profile-title">Welcome {this.state.Username}!</h1>
+        <Card style={{ backgroundImage: `url(${ProfileImage})`, backgroundSize: 'cover', width: '50rem' }} className="profile-view">
+          <Card.Body>
+            <Link to={`/`} className="profile-back">Back</Link>
+            <Card.Text className="profile-text profile-text-first">Username: {this.state.Username}</Card.Text>
+            <Card.Text className="profile-text">Email: {this.state.Email}</Card.Text>
+            <Card.Text className="profile-text">Birthday: {this.state.Birthday}</Card.Text>
+            <Link to={'/users/:userId/update'}>
+              <Button size="sm" variant="outline-dark" className="profile-button">Update Profile</Button>
+            </Link>
+            <Button onClick={() => this.deleteUser()} size="sm" variant="outline-danger" className="profile-button">Delete Profile</Button>
+          </Card.Body>
+        </Card>
+        <div>
+          <h1 className="favorites-title">Favorite Movies:</h1>
+          {favoritesList.map((movie) => {
+            return (
+              <Card key={movie._id} style={{ width: '20rem' }} className="fav-movies">
+                <Card.Img variant="top" src={movie.ImagePath} />
+                <Card.Body>
+                  <Link to={`/movies/${movie._id}`}>
+                    <Button size="sm" variant="link">Details</Button>
+                  </Link>
+                  <Button size="sm" variant="link" onClick={() => this.deleteFavorites(movie)} className="remove-fav">
+                    Remove
                   </Button>
-                  </Card.Body>
-                </Card>
-              );
-            })}
-          </div>
-        </Container>
+                </Card.Body>
+              </Card>
+            );
+          })}
+        </div>
       </div>
     );
   }

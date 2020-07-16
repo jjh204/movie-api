@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { setUser } from '../../actions/actions';
 
-import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './profile-update.scss';
+import UpdateImage from './profile-update.jpg';
 
 
 export function ProfileUpdate(props) {
@@ -46,7 +46,7 @@ export function ProfileUpdate(props) {
   };
 
   return (
-    <Container>
+    <div className="update-profile" style={{ backgroundImage: `url(${UpdateImage})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
       <Form className="profile-form">
         <Form.Group controlId="formBasicUsername" className="update-item">
           <Form.Label>Username:</Form.Label>
@@ -74,14 +74,16 @@ export function ProfileUpdate(props) {
           <Form.Control type="date" value={birthday} onChange={e => updateBirthday(e.target.value)} />
         </Form.Group>
 
-        <p>We'll never share your private details with anyone else.</p>
+        <div className="update-footer">
+          <p>We'll never share your private details with anyone else.</p>
 
-        <Button onClick={handleUpdate} variant="primary" type="submit" className="button" >Submit</Button>
-        <Link to={"/users/:userId"}>
-          <Button variant="outline-primary" className="button">Cancel</Button>
-        </Link>
+          <Button onClick={handleUpdate} variant="light" type="submit" className="button" >Submit</Button>
+          <Link to={"/users/:userId"}>
+            <Button variant="outline-light" className="button">Cancel</Button>
+          </Link>
+        </div>
       </Form>
-    </Container>
+    </div>
   )
 };
 

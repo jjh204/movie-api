@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './login-view.scss';
+import CinemaMain from './cinema-main.jpg';
 
 
 export function LoginView(props) {
@@ -34,26 +35,31 @@ export function LoginView(props) {
   };
 
   return (
-    <Form className="login-form">
-      <Form.Group controlId="formBasicUsername" className="login-item">
-        <Form.Label>Username:</Form.Label>
-        <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter username" />
-      </Form.Group>
+    <div className="login-view" style={{ backgroundImage: `url(${CinemaMain})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
+      <div className="app-title">
+        <h1>SuperFlix!</h1>
+      </div>
+      <Form className="login-form">
+        <Form.Group controlId="formBasicUsername" className="login-item">
+          <Form.Label>Username:</Form.Label>
+          <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter username" />
+        </Form.Group>
 
-      <Form.Group controlId="formBasicPassword" className="login-item">
-        <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Enter password" />
-      </Form.Group>
+        <Form.Group controlId="formBasicPassword" className="login-item">
+          <Form.Label>Password:</Form.Label>
+          <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Enter password" />
+        </Form.Group>
 
-      <Form.Group controlId="formBasicCheckbox" className="login-item">
-        <Form.Check type="checkbox" label="Check if you're ready to SuperFlix!" />
-      </Form.Group>
+        <Form.Group controlId="formBasicCheckbox" className="login-item">
+          <Form.Check type="checkbox" label="Check if you're ready to SuperFlix!" />
+        </Form.Group>
 
-      <Button onClick={handleSubmit} variant="danger" type="submit" className="button" >Login</Button>
-      <Link to={"/register"}>
-        <Button variant="outline-light" className="button">Register</Button>
-      </Link>
-    </Form>
+        <Button onClick={handleSubmit} variant="danger" type="submit" className="button" >Login</Button>
+        <Link to={"/register"}>
+          <Button variant="outline-light" className="button">Register</Button>
+        </Link>
+      </Form>
+    </div>
   );
 }
 
