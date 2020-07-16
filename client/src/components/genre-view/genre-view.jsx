@@ -21,13 +21,13 @@ export class GenreView extends React.Component {
     if (!genre) return null;
 
     return (
-      <Card style={{ width: '35rem' }} className="genre-card">
+      <Card style={{ width: '50rem' }} className="genre-card">
         <Card.Img variant="top" src={genre.Img} />
         <Card.Body>
-          <Card.Title>{genre.Name}</Card.Title>
-          <Card.Text>Description: {genre.Description}</Card.Text>
+          <Card.Title className="genre-name">{genre.Name}</Card.Title>
+          <Card.Text>{genre.Description}</Card.Text>
           <Link to={"/"}>
-            <Button variant="link" className="button">Back</Button>
+            <Button variant="link" className="button genre-view-back">Back</Button>
           </Link>
         </Card.Body>
       </Card>

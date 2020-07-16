@@ -1,13 +1,27 @@
 .movie-view {
-  margin: 50px;
-  text-align: center;
-  padding: 10px;
-}
-
-.movie-poster {
-  max-width: 500px;
+  margin: 0 auto;
 }
 
 .movie-container {
   margin: 50px;
+}
+
+.movie-view-title {
+  font-family: 'Bangers', cursive;
+  font-size: 3em;
+  padding-bottom: 0.5em;
+}
+
+.movie-view-back {
+  float: right;
+}
+
+.movie-view-text {
+  padding-bottom: 0.8em;
+}
+
+.movie-view-heading {
+  text-align: left;
+  color: #000000;
+  font-size: 1em;
 }

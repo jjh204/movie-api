@@ -1,8 +1,32 @@
 .movie-card {
-  margin: 40px;
-  padding: 5px;
+  display: inline-block;
+  margin: 1em;
 }
 
-.expand-movie {
-  color:#628fcc;
+.movie-card-title {
+  color: #030c61;
+  font-family: 'Bangers', cursive;
+  font-size: 2em;
+  padding-bottom: 0.5em;
+}
+
+.movie-links {
+  font-family: 'Bangers', cursive;
+  font-size: 1.3em;
+  color: #030c61;
+}
+
+.movie-card-director {
+  margin-left: 2em;
+}
+
+
+.movie-card-genre {
+  float: right;
+  margin-right: 2em;
+}
+
+.movie-card-fav {
+  float: right;
+  margin-top: 2.5em;
 }

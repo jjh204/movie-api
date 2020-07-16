@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Link } from "react-router-dom";
 
+import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import './movie-view.scss';
@@ -26,20 +27,27 @@ export class MovieView extends React.Component {
     if (!movie) return null;
 
     return (
-      <Card style={{ width: '50rem' }} className="movie-view">
-        <Card.Img variant="top" src={movie.ImagePath} />
-        <Card.Body className="movie-view-body">
-          <Card.Title>{movie.Title}</Card.Title>
-          <Card.Text>Released: {movie.Released}</Card.Text>
-          <Card.Text>Description: {movie.Description}</Card.Text>
-          <Card.Text>Director: {movie.Director.Name}</Card.Text>
-          <Card.Text>Genre: {movie.Genre.Name}</Card.Text>
-          <Card.Text>Staring: {this.formatStaring(movie.Staring)}</Card.Text>
+      <Container className="movie-view">
+        <Card style={{ float: 'left', width: '33rem', height: '49rem' }}>
+          <Card.Img variant="top" src={movie.ImagePath} />
+        </Card>
+        <Card style={{ width: '33rem', height: '49rem' }}>
+          <Card.Body className="movie-view-body">
+            <Card.Title className="movie-view-title">{movie.Title + ' - ' + movie.Released}</Card.Title>
+            <Card.Text className="movie-view-text">{movie.Description}</Card.Text>
+            <Card.Text className="movie-view-text">This movie was released in {movie.Released}.</Card.Text>
+            <h1 className="movie-view-heading">Staring: </h1>
+            <Card.Text className="movie-view-text">{this.formatStaring(movie.Staring)}</Card.Text>
+            <h1 className="movie-view-heading">Director: </h1>
+            <Card.Text className="movie-view-text">{movie.Director.Name}</Card.Text>
+            <h1 className="movie-view-heading">Genre: </h1>
+            <Card.Text className="movie-view-text">{movie.Genre.Name}</Card.Text>
+          </Card.Body>
           <Link to={"/"}>
-            <Button variant="link" className="movie-view-back-button">Back</Button>
+            <Button variant="link" className="button movie-view-back">Back</Button>
           </Link>
-        </Card.Body>
-      </Card>
+        </Card>
+      </Container>
     );
   }
 }
