@@ -7,8 +7,12 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { setUser } from '../../actions/actions';
 
-import Card from 'react-bootstrap/Card';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import './profile-view.scss';
 import ProfileImage from './profile-image.jpg';
 
@@ -22,14 +26,9 @@ export class ProfileView extends React.Component {
       password: null,
       email: null,
       birthday: null,
-      favorites: [],
+      Favorites: [],
       movies: [],
     };
-  }
-
-  componentDidMount() {
-    const accessToken = localStorage.getItem('token');
-    this.getUser(accessToken);
   }
 
   formatDate(date) {
@@ -51,9 +50,15 @@ export class ProfileView extends React.Component {
         Birthday: this.formatDate(res.data.Birthday),
         Favorites: res.data.Favorites
       });
+
     }).catch(function (err) {
       console.log(err);
     });
+  }
+
+  componentDidMount() {
+    const accessToken = localStorage.getItem('token');
+    this.getUser(accessToken);
   }
 
   deleteUser(token) {
@@ -78,13 +83,35 @@ export class ProfileView extends React.Component {
     });
   }
 
+  onLogOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    window.open('/', '_self');
+  }
+
   render() {
     const { movies } = this.props;
     const userFavorites = this.state.Favorites;
     const favoritesList = movies.filter((movie) => userFavorites.includes(movie._id));
 
     return (
-      <div>
+      <Container>
+        <Navbar collapseOnSelect expand="lg" bg="custom" variant="dark" className="fixed-top navbar-main">
+          <Navbar.Brand as={Link} to="/" className="navbar-brand">SuperFlix!</Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link as={Link} to="/" className="navbar-link">Home</Nav.Link>
+              <Nav.Link as={Link} to="/users/:userId" className="navbar-link">Profile</Nav.Link>
+              <NavDropdown title="About Developer" id="collasible-nav-dropdown" className="navbar-link">
+                <NavDropdown.Item href="https://jjh204.github.io/portfolio-website" target="_blank">Profile</NavDropdown.Item>
+                <NavDropdown.Item href="https://github.com/jjh204" target="_blank">GitHub</NavDropdown.Item>
+                <NavDropdown.Item href="www.linkedin.com/in/jenhobbs204" target="_blank">LinkedIn</NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+            <Button onClick={this.onLogOut} variant="dark" type="submit" className="button log-out-button"> Log Out</Button>
+          </Navbar.Collapse>
+        </Navbar>
         <h1 className="profile-title">Welcome {this.state.Username}!</h1>
         <Card style={{ backgroundImage: `url(${ProfileImage})`, backgroundSize: 'cover', width: '50rem' }} className="profile-view">
           <Card.Body>
@@ -93,17 +120,17 @@ export class ProfileView extends React.Component {
             <Card.Text className="profile-text">Email: {this.state.Email}</Card.Text>
             <Card.Text className="profile-text">Birthday: {this.state.Birthday}</Card.Text>
             <Link to={'/users/:userId/update'}>
-              <Button size="sm" variant="outline-dark" className="profile-button">Update Profile</Button>
+              <Button size="sm" variant="dark" className="profile-button">Update Profile</Button>
             </Link>
-            <Button onClick={() => this.deleteUser()} size="sm" variant="outline-danger" className="profile-button">Delete Profile</Button>
+            <Button onClick={() => this.deleteUser()} size="sm" variant="danger" className="profile-button">Delete Profile</Button>
           </Card.Body>
         </Card>
-        <div>
-          <h1 className="favorites-title">Favorite Movies:</h1>
+        <Container fluide={true}>
+          <h1 className="favorites-title">Your Favorites:</h1>
           {favoritesList.map((movie) => {
             return (
-              <Card key={movie._id} style={{ width: '20rem' }} className="fav-movies">
-                <Card.Img variant="top" src={movie.ImagePath} />
+              <Card key={movie._id} style={{ width: '15rem', margin: 15 }} className="fav-movies">
+                <Card.Img variant="top" src={movie.ImagePath} style={{ maxHeight: 350 }} />
                 <Card.Body>
                   <Link to={`/movies/${movie._id}`}>
                     <Button size="sm" variant="link">Details</Button>
@@ -115,8 +142,8 @@ export class ProfileView extends React.Component {
               </Card>
             );
           })}
-        </div>
-      </div>
+        </Container>
+      </Container>
     );
   }
 }
