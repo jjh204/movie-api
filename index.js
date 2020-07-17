@@ -4,11 +4,19 @@ const express = require('express'),
   uuid = require('uuid'),
   mongoose = require('mongoose'),
   Models = require('./models.js');
+const path = require("path");
 
 const Movies = Models.Movie;
 const Users = Models.User;
 
 const app = express();
+
+app.use(express.static('public'));
+app.use('/client', express.static(path.join(__dirname, "client", "dist")));
+
+app.get("/client/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
 
 const cors = require('cors');
 /* app.use(cors()); */
