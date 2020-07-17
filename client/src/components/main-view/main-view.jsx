@@ -17,8 +17,6 @@ import { GenreView } from '../genre-view/genre-view';
 import { ProfileView } from '../profile-view/profile-view';
 import { ProfileUpdate } from '../profile-update/profile-update';
 
-import { Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
 import './main-view.scss';
 
 export class MainView extends React.Component {
@@ -88,10 +86,6 @@ export class MainView extends React.Component {
     return (
       <Router>
         <div className="main-view">
-          <Link to={"/users/:userId"}>
-            <Button variant="info" className="button">Profile</Button>
-          </Link>
-          <Button onClick={this.onLogOut} variant="dark" type="submit" className="button"> Log Out</Button>
           <Route exact path="/" render={() => {
             if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
             return <MoviesList movies={movies} />;
@@ -111,6 +105,10 @@ export class MainView extends React.Component {
           <Route exact path="/users/:userId" render={() => <ProfileView movies={movies} />} />
           <Route exact path="/users/:userId/update" render={() => <ProfileUpdate movies={movies} />} />
         </div>
+        <footer>
+          <p>Designed and created by Jen Hobbs. </p>
+          <p>Movie data from IMDB. Photo's from UnSplash.</p>
+        </footer>
       </Router>
     );
   }
