@@ -1,3 +1,7 @@
+.movie-view-container{
+  margin-top: 8em;
+}
+
 .movie-view {
   margin: 0 auto;
 }
@@ -12,12 +16,17 @@
   padding-bottom: 0.5em;
 }
 
+.movie-view-links {
+  display: inline-block;
+  margin: 0.3em;
+}
+
 .movie-view-back {
   float: right;
 }
 
 .movie-view-text {
-  padding-bottom: 0.8em;
+  padding-bottom: 0.6em;
 }
 
 .movie-view-heading {

@@ -29,7 +29,7 @@ export function LoginView(props) {
         props.onLoggedIn(data);
       })
       .catch(e => {
-        alert('This username or password does not exist');
+        alert('There was an error logging you in. Please check your username and password are correct.');
         console.log('Error');
       });
   };

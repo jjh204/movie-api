@@ -37,6 +37,7 @@ export function RegistrationView(props) {
 
   return (
     <div className="registration-view" style={{ backgroundImage: `url(${CinemaMain})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
+      <h2>Thanks for signing up!</h2>
       <Form className="registration-form">
         <Form.Group controlId="formBasicUsername" className="registration-item">
           <Form.Label>Username:</Form.Label>

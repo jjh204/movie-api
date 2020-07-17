@@ -1,6 +1,5 @@
 .movie-card {
   display: inline-block;
-  margin: 1em;
 }
 
 .movie-card-title {
@@ -14,9 +13,11 @@
   font-family: 'Bangers', cursive;
   font-size: 1.3em;
   color: #030c61;
+  margin-bottom: 0.3em;
 }
 
 .movie-card-director {
+  float: left;
   margin-left: 2em;
 }
 
@@ -26,7 +27,14 @@
   margin-right: 2em;
 }
 
-.movie-card-fav {
-  float: right;
-  margin-top: 2.5em;
+@media all and (max-width: 750px) {
+  .movie-links {
+    font-size: 1em;
+    margin: 0;
+  }
+
+  .movie-card-director {
+    margin-top: 5em;
+  }
+
 }

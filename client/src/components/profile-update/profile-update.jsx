@@ -7,6 +7,10 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { setUser } from '../../actions/actions';
 
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './profile-update.scss';
@@ -41,49 +45,74 @@ export function ProfileUpdate(props) {
     })
       .catch((e) => {
         console.log(e);
-        alert('There was an error updating your profile.');
+        alert('There was an error updating your profile. Please check you have completed all fields.');
       });
   };
 
+  const onLogOut = (e) => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    window.open('/', '_self');
+  };
+
   return (
-    <div className="update-profile" style={{ backgroundImage: `url(${UpdateImage})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
-      <Form className="profile-form">
-        <Form.Group controlId="formBasicUsername" className="update-item">
-          <Form.Label>Username:</Form.Label>
-          <Form.Control type="text" value={username} onChange={e => updateUsername(e.target.value)} placeholder="Update username" />
-          <Form.Text className="text-muted">
-            Must have a minimim of 5 characters
+    <Container>
+      <Navbar collapseOnSelect expand="lg" bg="custom" variant="dark" className="fixed-top navbar-main">
+        <Navbar.Brand as={Link} to="/" className="navbar-brand">SuperFlix!</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link as={Link} to="/" className="navbar-link">Home</Nav.Link>
+            <Nav.Link as={Link} to="/users/:userId" className="navbar-link">Profile</Nav.Link>
+            <NavDropdown title="About Developer" id="collasible-nav-dropdown" className="navbar-link">
+              <NavDropdown.Item href="https://jjh204.github.io/portfolio-website" target="_blank">Profile</NavDropdown.Item>
+              <NavDropdown.Item href="https://github.com/jjh204" target="_blank">GitHub</NavDropdown.Item>
+              <NavDropdown.Item href="www.linkedin.com/in/jenhobbs204" target="_blank">LinkedIn</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+          <Button onClick={onLogOut} variant="dark" type="submit" className="button log-out-button"> Log Out</Button>
+        </Navbar.Collapse>
+      </Navbar>
+      <div className="update-profile" style={{ backgroundImage: `url(${UpdateImage})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
+        <h2>Update your profile</h2>
+        <Form className="profile-form">
+          <Form.Group controlId="formBasicUsername" className="update-item">
+            <Form.Label>Username:</Form.Label>
+            <Form.Control type="text" value={username} onChange={e => updateUsername(e.target.value)} placeholder="Update username" autoFocus />
+            <Form.Text className="text-muted">
+              Must have a minimim of 5 characters
       </Form.Text>
-        </Form.Group>
+          </Form.Group>
 
-        <Form.Group controlId="formBasicpassword" className="update-item">
-          <Form.Label>Password:</Form.Label>
-          <Form.Control type="password" value={password} onChange={e => updatePassword(e.target.value)} placeholder="Update password" />
-          <Form.Text className="text-muted">
-            We recommend your password to be 8-20 characters long
+          <Form.Group controlId="formBasicpassword" className="update-item">
+            <Form.Label>Password:</Form.Label>
+            <Form.Control type="password" value={password} onChange={e => updatePassword(e.target.value)} placeholder="Update password" />
+            <Form.Text className="text-muted">
+              We recommend your password to be 8-20 characters long
       </Form.Text>
-        </Form.Group>
+          </Form.Group>
 
-        <Form.Group controlId="formBasicEmail" className="update-item">
-          <Form.Label>Email:</Form.Label>
-          <Form.Control type="email" value={email} onChange={e => updateEmail(e.target.value)} placeholder="Update email" />
-        </Form.Group>
+          <Form.Group controlId="formBasicEmail" className="update-item">
+            <Form.Label>Email:</Form.Label>
+            <Form.Control type="email" value={email} onChange={e => updateEmail(e.target.value)} placeholder="Update email" />
+          </Form.Group>
 
-        <Form.Group controlId="formBasicBirthday" className="update-item">
-          <Form.Label>Birthday:</Form.Label>
-          <Form.Control type="date" value={birthday} onChange={e => updateBirthday(e.target.value)} />
-        </Form.Group>
+          <Form.Group controlId="formBasicBirthday" className="update-item">
+            <Form.Label>Birthday:</Form.Label>
+            <Form.Control type="date" value={birthday} onChange={e => updateBirthday(e.target.value)} />
+          </Form.Group>
 
-        <div className="update-footer">
-          <p>We'll never share your private details with anyone else.</p>
+          <div className="update-footer">
+            <p>We'll never share your private details with anyone else.</p>
 
-          <Button onClick={handleUpdate} variant="light" type="submit" className="button" >Submit</Button>
-          <Link to={"/users/:userId"}>
-            <Button variant="outline-light" className="button">Cancel</Button>
-          </Link>
-        </div>
-      </Form>
-    </div>
+            <Button onClick={handleUpdate} variant="light" type="submit" className="button" >Submit</Button>
+            <Link to={"/users/:userId"}>
+              <Button variant="outline-light" className="button">Cancel</Button>
+            </Link>
+          </div>
+        </Form>
+      </div>
+    </Container>
   )
 };
 

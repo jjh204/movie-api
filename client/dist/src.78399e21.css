@@ -1,6 +1,5 @@
 .movie-card {
   display: inline-block;
-  margin: 1em;
 }
 
 .movie-card-title {
@@ -14,9 +13,11 @@
   font-family: "Bangers", cursive;
   font-size: 1.3em;
   color: #030c61;
+  margin-bottom: 0.3em;
 }
 
 .movie-card-director {
+  float: left;
   margin-left: 2em;
 }
 
@@ -25,9 +26,15 @@
   margin-right: 2em;
 }
 
-.movie-card-fav {
-  float: right;
-  margin-top: 2.5em;
+@media all and (max-width: 750px) {
+  .movie-links {
+    font-size: 1em;
+    margin: 0;
+  }
+
+  .movie-card-director {
+    margin-top: 5em;
+  }
 }
 .registration-view {
   width: 100%;
@@ -83,6 +90,10 @@
   margin: 20px;
   width: 150px;
 }
+.movie-view-container {
+  margin-top: 8em;
+}
+
 .movie-view {
   margin: 0 auto;
 }
@@ -97,12 +108,17 @@
   padding-bottom: 0.5em;
 }
 
+.movie-view-links {
+  display: inline-block;
+  margin: 0.3em;
+}
+
 .movie-view-back {
   float: right;
 }
 
 .movie-view-text {
-  padding-bottom: 0.8em;
+  padding-bottom: 0.6em;
 }
 
 .movie-view-heading {
@@ -110,6 +126,10 @@
   color: #000000;
   font-size: 1em;
 }
+.director-view-container {
+  margin-top: 8em;
+}
+
 .director-card {
   margin: 0 auto;
 }
@@ -124,6 +144,10 @@
 .director-view-back {
   float: right;
 }
+.genre-view-container {
+  margin-top: 8em;
+}
+
 .genre-card {
   margin: 0 auto;
 }
@@ -174,7 +198,6 @@
 }
 
 .fav-movies {
-  margin: 4em;
   display: inline-block;
 }
 
@@ -189,6 +212,10 @@
   left: 0;
   padding-top: 2em;
   color: #ffffff;
+}
+
+.update-profile {
+  margin-top: 6.1em;
 }
 
 .profile-form {
@@ -223,6 +250,58 @@ h1 {
   font-family: "Bangers", cursive;
   font-size: 8em;
   color: #ffffff;
+}
+
+h2 {
+  text-align: center;
+  font-family: "Bangers", cursive;
+  font-size: 5em;
+  color: #ffffff;
+}
+
+.main-view {
+  margin-top: 6.1em;
+}
+
+.navbar-brand {
+  font-family: "Bangers", cursive;
+  font-size: 3em;
+}
+
+.navbar-main {
+  background: black;
+}
+
+.log-out-button {
+  float: right;
+}
+
+.visibility-filter {
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+}
+
+.navbar-link {
+  margin-left: 1.5em;
+}
+
+footer {
+  text-align: right;
+  margin-top: 5em;
+  margin-right: 1em;
+  color: #ffffff;
+  font-size: 0.7em;
+}
+
+@media all and (max-width: 750px) {
+  body {
+    font-size: 0.7em;
+  }
+
+  h1 {
+    font-size: 5em;
+  }
 }
 .super-flix {
   color: #7bb3ff;
