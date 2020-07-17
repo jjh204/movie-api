@@ -52,7 +52,7 @@ export function ProfileUpdate(props) {
   const onLogOut = (e) => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    window.open('/', '_self');
+    window.open('/client', '_self');
   };
 
   return (

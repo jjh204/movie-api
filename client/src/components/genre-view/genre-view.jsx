@@ -22,7 +22,7 @@ export class GenreView extends React.Component {
   onLogOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    window.open('/', '_self');
+    window.open('/client', '_self');
   }
 
   render() {
