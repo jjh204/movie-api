@@ -39,7 +39,7 @@ export class MovieView extends React.Component {
   onLogOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    window.open('/', '_self');
+    window.open('/client', '_self');
   }
 
   render() {
