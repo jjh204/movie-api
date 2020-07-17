@@ -1,25 +1,16 @@
 import React from 'react';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 
-import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import './movie-card.scss';
 
 export class MovieCard extends React.Component {
-
-  addToFavorites(movie) {
-    const token = localStorage.getItem('token');
-    const userId = localStorage.getItem('user');
-    axios.post(`https://superflix-api.herokuapp.com/users/${userId}/Favorites/${movie._id}`, { username: localStorage.getItem('user') }, {
-      headers: { Authorization: `Bearer ${token}` },
-    }).then((res) => {
-      console.log(res);
-      alert('This movie has been added to your Favorites.');
-    });
-  }
 
   render() {
     // This is given to the <MovieCard/> component by the outer world 
@@ -28,24 +19,25 @@ export class MovieCard extends React.Component {
     const { movie } = this.props;
 
     return (
-      <Card style={{ width: '30rem', margin: 50 }} className="movie-card">
-        <Card.Img variant="top" src={movie.ImagePath} className="movie-card-img" />
-        <Card.Body>
-          <Link to={`/movies/${movie._id}`}>
-            <Card.Title className="movie-card-title">{movie.Title + ' - ' + movie.Released}</Card.Title>
-          </Link>
-          <Card.Text style={{ height: '20rem' }}>{movie.Description}</Card.Text>
-          <div>
-            <Link to={`/directors/${movie.Director.Name}`}>
-              <Button variant="link" className="movie-links movie-card-director">Director Info</Button>
+      <div className="movie-card">
+        <Card key={movie._id} style={{ width: '30rem', margin: 55 }} >
+          <Card.Img variant="top" src={movie.ImagePath} style={{ maxHeight: 650 }} className="movie-card-img" />
+          <Card.Body>
+            <Link to={`/movies/${movie._id}`}>
+              <Card.Title className="movie-card-title">{movie.Title + ' - ' + movie.Released}</Card.Title>
             </Link>
-            <Link to={`/genres/${movie.Genre.Name}`}>
-              <Button variant="link" className="movie-links movie-card-genre">{movie.Genre.Name}</Button>
-            </Link>
-          </div>
-          <Button size='sm' variant="link" onClick={() => this.addToFavorites(movie)} className="movie-card-fav">Add Favorite</Button>
-        </Card.Body>
-      </Card>
+            <Card.Text style={{ height: '20rem' }}>{movie.Description}</Card.Text>
+            <div>
+              <Link to={`/directors/${movie.Director.Name}`}>
+                <Button variant="link" className="movie-links movie-card-director">Director Info</Button>
+              </Link>
+              <Link to={`/genres/${movie.Genre.Name}`}>
+                <Button variant="link" className="movie-links movie-card-genre">{movie.Genre.Name}</Button>
+              </Link>
+            </div>
+          </Card.Body>
+        </Card>
+      </div>
     );
   }
 }
