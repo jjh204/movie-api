@@ -50,11 +50,11 @@ export class MovieView extends React.Component {
     return (
       <div>
         <Navbar collapseOnSelect expand="lg" bg="custom" variant="dark" className="fixed-top navbar-main">
-          <Navbar.Brand as={Link} to="/client" className="navbar-brand">SuperFlix!</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/" className="navbar-brand">SuperFlix!</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link as={Link} to="/client" className="navbar-link">Home</Nav.Link>
+              <Nav.Link as={Link} to="/" className="navbar-link">Home</Nav.Link>
               <Nav.Link as={Link} to="/users/:userId" className="navbar-link">Profile</Nav.Link>
               <NavDropdown title="About Developer" id="collasible-nav-dropdown" className="navbar-link">
                 <NavDropdown.Item href="https://jjh204.github.io/portfolio-website" target="_blank">Profile</NavDropdown.Item>
@@ -67,10 +67,10 @@ export class MovieView extends React.Component {
         </Navbar>
         <Container className="movie-view-container">
           <div className="movie-view">
-            <Card style={{ float: 'left', width: '33rem', height: '49rem' }}>
+            <Card style={{ float: 'left', width: '33rem', height: '49rem' }} className="movie-view-card">
               <Card.Img variant="top" src={movie.ImagePath} style={{ maxHeight: 800, marginTop: 2 }} />
             </Card>
-            <Card style={{ width: '33rem', height: '49rem' }}>
+            <Card style={{ width: '33rem', height: '49rem' }} className="movie-view-card">
               <Card.Body className="movie-view-body">
                 <Card.Title className="movie-view-title">{movie.Title + ' - ' + movie.Released}</Card.Title>
                 <Card.Text className="movie-view-text">{movie.Description}</Card.Text>

@@ -34,3 +34,9 @@
   color: #000000;
   font-size: 1em;
 }
+
+@media all and (max-width: 750px) {
+  .movie-view-card {
+    width: 80%;
+  }
+}

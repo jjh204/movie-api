@@ -1,8 +1,14 @@
+
+* {
+  display: box;
+}
+
 body {
   color: #000000;
   font-family: 'Roboto', sans-serif;
   font-size: 1em;
   background: #000000;
+  overflow-y: auto;
 
   }
 

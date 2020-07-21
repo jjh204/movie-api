@@ -1,5 +1,5 @@
 .movie-card {
-  display: inline-block;
+  display: inline-flex;
 }
 
 .movie-card-title {
@@ -7,6 +7,10 @@
   font-family: "Bangers", cursive;
   font-size: 2em;
   padding-bottom: 0.5em;
+}
+
+.movie-card-description {
+  height: 20em;
 }
 
 .movie-links {
@@ -27,13 +31,17 @@
 }
 
 @media all and (max-width: 750px) {
+  .movie-card {
+    max-width: 85%;
+  }
+
   .movie-links {
-    font-size: 1em;
+    font-size: 1.2em;
     margin: 0;
   }
 
-  .movie-card-director {
-    margin-top: 5em;
+  .movie-card-description {
+    display: none;
   }
 }
 .registration-view {
@@ -126,6 +134,12 @@
   color: #000000;
   font-size: 1em;
 }
+
+@media all and (max-width: 750px) {
+  .movie-view-card {
+    width: 80%;
+  }
+}
 .director-view-container {
   margin-top: 8em;
 }
@@ -144,6 +158,12 @@
 .director-view-back {
   float: right;
 }
+
+@media all and (max-width: 800px) {
+  .director-card {
+    max-width: 90%;
+  }
+}
 .genre-view-container {
   margin-top: 8em;
 }
@@ -161,6 +181,12 @@
 
 .genre-view-back {
   float: right;
+}
+
+@media all and (max-width: 800px) {
+  .genre-card {
+    max-width: 90%;
+  }
 }
 .profile-title {
   font-size: 5em;
@@ -204,6 +230,12 @@
 .remove-fav {
   float: right;
 }
+
+@media all and (max-width: 1000px) {
+  .profile-view {
+    max-width: 90%;
+  }
+}
 .update-profile {
   width: 100%;
   height: 100%;
@@ -238,11 +270,16 @@
   margin: 20px;
   width: 150px;
 }
+* {
+  display: box;
+}
+
 body {
   color: #000000;
   font-family: "Roboto", sans-serif;
   font-size: 1em;
   background: #000000;
+  overflow-y: auto;
 }
 
 h1 {

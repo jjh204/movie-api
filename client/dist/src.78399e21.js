@@ -37755,111 +37755,7 @@ exports.default = _default;
 VisibilityFilterInput.propTypes = {
   visibilityFilter: _propTypes.default.string
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-redux":"../node_modules/react-redux/es/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","../../actions/actions":"actions/actions.js"}],"../node_modules/react-bootstrap/esm/Container.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
-
-var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _ThemeProvider = require("./ThemeProvider");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var defaultProps = {
-  fluid: false
-};
-
-var Container = _react.default.forwardRef(function (_ref, ref) {
-  var bsPrefix = _ref.bsPrefix,
-      fluid = _ref.fluid,
-      _ref$as = _ref.as,
-      Component = _ref$as === void 0 ? 'div' : _ref$as,
-      className = _ref.className,
-      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["bsPrefix", "fluid", "as", "className"]);
-  var prefix = (0, _ThemeProvider.useBootstrapPrefix)(bsPrefix, 'container');
-  var suffix = typeof fluid === 'string' ? "-" + fluid : '-fluid';
-  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({
-    ref: ref
-  }, props, {
-    className: (0, _classnames.default)(className, fluid ? "" + prefix + suffix : prefix)
-  }));
-});
-
-Container.displayName = 'Container';
-Container.defaultProps = defaultProps;
-var _default = Container;
-exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js"}],"../node_modules/react-bootstrap/esm/Row.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
-
-var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _ThemeProvider = require("./ThemeProvider");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var DEVICE_SIZES = ['xl', 'lg', 'md', 'sm', 'xs'];
-var defaultProps = {
-  noGutters: false
-};
-
-var Row = _react.default.forwardRef(function (_ref, ref) {
-  var bsPrefix = _ref.bsPrefix,
-      className = _ref.className,
-      noGutters = _ref.noGutters,
-      _ref$as = _ref.as,
-      Component = _ref$as === void 0 ? 'div' : _ref$as,
-      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["bsPrefix", "className", "noGutters", "as"]);
-  var decoratedBsPrefix = (0, _ThemeProvider.useBootstrapPrefix)(bsPrefix, 'row');
-  var sizePrefix = decoratedBsPrefix + "-cols";
-  var classes = [];
-  DEVICE_SIZES.forEach(function (brkPoint) {
-    var propValue = props[brkPoint];
-    delete props[brkPoint];
-    var cols;
-
-    if (propValue != null && typeof propValue === 'object') {
-      cols = propValue.cols;
-    } else {
-      cols = propValue;
-    }
-
-    var infix = brkPoint !== 'xs' ? "-" + brkPoint : '';
-    if (cols != null) classes.push("" + sizePrefix + infix + "-" + cols);
-  });
-  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({
-    ref: ref
-  }, props, {
-    className: _classnames.default.apply(void 0, [className, decoratedBsPrefix, noGutters && 'no-gutters'].concat(classes))
-  }));
-});
-
-Row.displayName = 'Row';
-Row.defaultProps = defaultProps;
-var _default = Row;
-exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-redux":"../node_modules/react-redux/es/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","../../actions/actions":"actions/actions.js"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38311,12 +38207,6 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _reactRouterDom = require("react-router-dom");
 
-var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
-
-var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
-
-var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
-
 var _Card = _interopRequireDefault(require("react-bootstrap/Card"));
 
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
@@ -38365,20 +38255,16 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       // which, in this case, is `MainView`, as `MainView` is what’s
       // connected to your database via the movies endpoint of the API
       var movie = this.props.movie;
-      return _react.default.createElement("div", {
-        className: "movie-card"
-      }, _react.default.createElement(_Card.default, {
+      return _react.default.createElement(_Card.default, {
         key: movie._id,
         style: {
           width: '30rem',
           margin: 55
-        }
+        },
+        className: "movie-card"
       }, _react.default.createElement(_Card.default.Img, {
         variant: "top",
         src: movie.ImagePath,
-        style: {
-          maxHeight: 650
-        },
         className: "movie-card-img"
       }), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/movies/".concat(movie._id)
@@ -38386,8 +38272,9 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
         className: "movie-card-title"
       }, movie.Title + ' - ' + movie.Released)), _react.default.createElement(_Card.default.Text, {
         style: {
-          height: '20rem'
-        }
+          maxHeight: 650
+        },
+        className: "movie-card-description"
       }, movie.Description), _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/directors/".concat(movie.Director.Name)
       }, _react.default.createElement(_Button.default, {
@@ -38398,7 +38285,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Button.default, {
         variant: "link",
         className: "movie-links movie-card-genre"
-      }, movie.Genre.Name))))));
+      }, movie.Genre.Name)))));
     }
   }]);
 
@@ -38426,7 +38313,7 @@ MovieCard.propTypes = {
     Featured: _propTypes.default.bool.isRequired
   }).isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./movie-card.scss":"components/movie-card/movie-card.scss"}],"../node_modules/dom-helpers/esm/matches.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./movie-card.scss":"components/movie-card/movie-card.scss"}],"../node_modules/dom-helpers/esm/matches.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45265,7 +45152,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var onLogOut = function onLogOut(e) {
   localStorage.removeItem('token');
   localStorage.removeItem('user');
-  window.open('/', '_self');
+  window.open('/client', '_self');
 };
 
 function MoviesList(props) {
@@ -45421,7 +45308,7 @@ function RegistrationView(props) {
       var data = res.data;
       console.log(data);
       alert('Your account has been created - you can now Login.');
-      window.open('/', '_self');
+      window.open('/client', '_self');
     }).catch(function (e) {
       console.log('registration error');
       alert('There was an error with your registration.');
@@ -45646,7 +45533,51 @@ var _default = (0, _reactRedux.connect)(null, {
 })(LoginView);
 
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-redux":"../node_modules/react-redux/es/index.js","../../actions/actions":"actions/actions.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","./login-view.scss":"components/login-view/login-view.scss","./cinema-main.jpg":"components/login-view/cinema-main.jpg"}],"components/movie-view/movie-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-redux":"../node_modules/react-redux/es/index.js","../../actions/actions":"actions/actions.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","./login-view.scss":"components/login-view/login-view.scss","./cinema-main.jpg":"components/login-view/cinema-main.jpg"}],"../node_modules/react-bootstrap/esm/Container.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _ThemeProvider = require("./ThemeProvider");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var defaultProps = {
+  fluid: false
+};
+
+var Container = _react.default.forwardRef(function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      fluid = _ref.fluid,
+      _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'div' : _ref$as,
+      className = _ref.className,
+      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["bsPrefix", "fluid", "as", "className"]);
+  var prefix = (0, _ThemeProvider.useBootstrapPrefix)(bsPrefix, 'container');
+  var suffix = typeof fluid === 'string' ? "-" + fluid : '-fluid';
+  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({
+    ref: ref
+  }, props, {
+    className: (0, _classnames.default)(className, fluid ? "" + prefix + suffix : prefix)
+  }));
+});
+
+Container.displayName = 'Container';
+Container.defaultProps = defaultProps;
+var _default = Container;
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js"}],"components/movie-view/movie-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -45748,7 +45679,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
     value: function onLogOut() {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      window.open('/', '_self');
+      window.open('/client', '_self');
     }
   }, {
     key: "render",
@@ -45808,7 +45739,8 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
           float: 'left',
           width: '33rem',
           height: '49rem'
-        }
+        },
+        className: "movie-view-card"
       }, _react.default.createElement(_Card.default.Img, {
         variant: "top",
         src: movie.ImagePath,
@@ -45820,7 +45752,8 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         style: {
           width: '33rem',
           height: '49rem'
-        }
+        },
+        className: "movie-view-card"
       }, _react.default.createElement(_Card.default.Body, {
         className: "movie-view-body"
       }, _react.default.createElement(_Card.default.Title, {
@@ -45963,13 +45896,15 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
     value: function onLogOut() {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      window.open('/', '_self');
+      window.open('/client', '_self');
     }
   }, {
     key: "render",
     value: function render() {
       var director = this.props.director;
-      if (!director) return null;
+      if (!director) return _react.default.createElement("div", {
+        className: "main-view"
+      });
       return _react.default.createElement("div", null, _react.default.createElement(_Navbar.default, {
         collapseOnSelect: true,
         expand: "lg",
@@ -46124,13 +46059,15 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
     value: function onLogOut() {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      window.open('/', '_self');
+      window.open('/client', '_self');
     }
   }, {
     key: "render",
     value: function render() {
       var genre = this.props.genre;
-      if (!genre) return null;
+      if (!genre) return _react.default.createElement("div", {
+        className: "main-view"
+      });
       return _react.default.createElement("div", null, _react.default.createElement(_Navbar.default, {
         collapseOnSelect: true,
         expand: "lg",
@@ -46348,7 +46285,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       });
 
       localStorage.removeItem('token');
-      window.open('/', '_self');
+      window.open('/client', '_self');
     }
   }, {
     key: "deleteFavorites",
@@ -46373,7 +46310,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
     value: function onLogOut() {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      window.open('/', '_self');
+      window.open('/client', '_self');
     }
   }, {
     key: "render",
@@ -46459,7 +46396,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         variant: "danger",
         className: "profile-button"
       }, "Delete Profile"))), _react.default.createElement(_Container.default, {
-        fluide: true
+        fluide: "true"
       }, _react.default.createElement("h1", {
         className: "favorites-title"
       }, "Your Favorites:"), favoritesList.map(function (movie) {
@@ -46616,14 +46553,14 @@ function ProfileUpdate(props) {
       window.open("/users/:userId", "_self");
     }).catch(function (e) {
       console.log(e);
-      alert('There was an error updating your profile. Please check you have completed all fields.');
+      alert('There was an error updating your profile. Please check all fields have been completed.');
     });
   };
 
   var onLogOut = function onLogOut(e) {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    window.open('/', '_self');
+    window.open('/client', '_self');
   };
 
   return _react.default.createElement(_Container.default, null, _react.default.createElement(_Navbar.default, {
@@ -46673,7 +46610,7 @@ function ProfileUpdate(props) {
     style: {
       backgroundImage: "url(".concat(_profileUpdate2.default, ")"),
       backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover'
+      backgroundSize: 'fill'
     }
   }, _react.default.createElement("h2", null, "Update your profile"), _react.default.createElement(_Form.default, {
     className: "profile-form"
@@ -46878,7 +46815,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function onLogOut() {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      window.open('/', '_self');
+      window.open('/client', '_self');
     }
   }, {
     key: "render",
@@ -46895,7 +46832,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
       });
-      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("div", {
+      return _react.default.createElement(_reactRouterDom.BrowserRouter, {
+        basename: "/client"
+      }, _react.default.createElement("div", {
         className: "main-view"
       }, _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
@@ -47151,7 +47090,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64860" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54472" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

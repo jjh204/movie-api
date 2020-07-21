@@ -16,3 +16,9 @@
 .genre-view-back {
   float: right;
 }
+
+@media all and (max-width: 800px) {
+  .genre-card {
+    max-width: 90%;
+  }
+}

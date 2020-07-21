@@ -29,16 +29,16 @@ export class DirectorView extends React.Component {
   render() {
     const { director } = this.props;
 
-    if (!director) return null;
+    if (!director) return <div className="main-view" />;
 
     return (
       <div>
         <Navbar collapseOnSelect expand="lg" bg="custom" variant="dark" className="fixed-top navbar-main">
-          <Navbar.Brand as={Link} to="/client" className="navbar-brand">SuperFlix!</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/" className="navbar-brand">SuperFlix!</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link as={Link} to="/client" className="navbar-link">Home</Nav.Link>
+              <Nav.Link as={Link} to="/" className="navbar-link">Home</Nav.Link>
               <Nav.Link as={Link} to="/users/:userId" className="navbar-link">Profile</Nav.Link>
               <NavDropdown title="About Developer" id="collasible-nav-dropdown" className="navbar-link">
                 <NavDropdown.Item href="https://jjh204.github.io/portfolio-website" target="_blank">Profile</NavDropdown.Item>
