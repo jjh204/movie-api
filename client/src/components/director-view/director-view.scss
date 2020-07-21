@@ -16,3 +16,9 @@ margin: 0 auto;
 .director-view-back {
   float: right;
 }
+
+@media all and (max-width: 800px) {
+  .director-card {
+    max-width: 90%;
+  }
+}
