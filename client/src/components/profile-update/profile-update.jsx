@@ -16,7 +16,6 @@ import Form from 'react-bootstrap/Form';
 import './profile-update.scss';
 import UpdateImage from './profile-update.jpg';
 
-
 export function ProfileUpdate(props) {
   const [username, updateUsername] = useState('');
   const [password, updatePassword] = useState('');
@@ -45,7 +44,7 @@ export function ProfileUpdate(props) {
     })
       .catch((e) => {
         console.log(e);
-        alert('There was an error updating your profile. Please check you have completed all fields.');
+        alert('There was an error updating your profile. Please check all fields have been completed.');
       });
   };
 
@@ -58,11 +57,11 @@ export function ProfileUpdate(props) {
   return (
     <Container>
       <Navbar collapseOnSelect expand="lg" bg="custom" variant="dark" className="fixed-top navbar-main">
-        <Navbar.Brand as={Link} to="/client" className="navbar-brand">SuperFlix!</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/" className="navbar-brand">SuperFlix!</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link as={Link} to="/client" className="navbar-link">Home</Nav.Link>
+            <Nav.Link as={Link} to="/" className="navbar-link">Home</Nav.Link>
             <Nav.Link as={Link} to="/users/:userId" className="navbar-link">Profile</Nav.Link>
             <NavDropdown title="About Developer" id="collasible-nav-dropdown" className="navbar-link">
               <NavDropdown.Item href="https://jjh204.github.io/portfolio-website" target="_blank">Profile</NavDropdown.Item>
@@ -73,7 +72,7 @@ export function ProfileUpdate(props) {
           <Button onClick={onLogOut} variant="dark" type="submit" className="button log-out-button"> Log Out</Button>
         </Navbar.Collapse>
       </Navbar>
-      <div className="update-profile" style={{ backgroundImage: `url(${UpdateImage})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
+      <div className="update-profile" style={{ backgroundImage: `url(${UpdateImage})`, backgroundRepeat: 'no-repeat', backgroundSize: 'fill' }}>
         <h2>Update your profile</h2>
         <Form className="profile-form">
           <Form.Group controlId="formBasicUsername" className="update-item">
