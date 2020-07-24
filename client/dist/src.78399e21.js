@@ -45165,9 +45165,6 @@ function MoviesList(props) {
     });
   }
 
-  if (!movies) return _react.default.createElement("div", {
-    className: "main-view"
-  });
   return _react.default.createElement("div", {
     className: "movies-list"
   }, _react.default.createElement(_Navbar.default, {
@@ -45205,7 +45202,7 @@ function MoviesList(props) {
     href: "https://github.com/jjh204",
     target: "_blank"
   }, "GitHub"), _react.default.createElement(_NavDropdown.default.Item, {
-    href: "www.linkedin.com/in/jenhobbs204",
+    href: "https://www.linkedin.com/in/jenhobbs204/",
     target: "_blank"
   }, "LinkedIn"))), _react.default.createElement(_Button.default, {
     onClick: onLogOut,
@@ -45722,7 +45719,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         href: "https://github.com/jjh204",
         target: "_blank"
       }, "GitHub"), _react.default.createElement(_NavDropdown.default.Item, {
-        href: "www.linkedin.com/in/jenhobbs204",
+        href: "https://www.linkedin.com/in/jenhobbs204/",
         target: "_blank"
       }, "LinkedIn"))), _react.default.createElement(_Button.default, {
         onClick: this.onLogOut,
@@ -45928,7 +45925,7 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
         href: "https://github.com/jjh204",
         target: "_blank"
       }, "GitHub"), _react.default.createElement(_NavDropdown.default.Item, {
-        href: "www.linkedin.com/in/jenhobbs204",
+        href: "https://www.linkedin.com/in/jenhobbs204/",
         target: "_blank"
       }, "LinkedIn"))), _react.default.createElement(_Button.default, {
         onClick: this.OnLogOut,
@@ -46091,7 +46088,7 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
         href: "https://github.com/jjh204",
         target: "_blank"
       }, "GitHub"), _react.default.createElement(_NavDropdown.default.Item, {
-        href: "www.linkedin.com/in/jenhobbs204",
+        href: "https://www.linkedin.com/in/jenhobbs204/",
         target: "_blank"
       }, "LinkedIn"))), _react.default.createElement(_Button.default, {
         onClick: this.onLogOut,
@@ -46345,7 +46342,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         href: "https://github.com/jjh204",
         target: "_blank"
       }, "GitHub"), _react.default.createElement(_NavDropdown.default.Item, {
-        href: "www.linkedin.com/in/jenhobbs204",
+        href: "https://www.linkedin.com/in/jenhobbs204/",
         target: "_blank"
       }, "LinkedIn"))), _react.default.createElement(_Button.default, {
         onClick: this.onLogOut,
@@ -46586,7 +46583,7 @@ function ProfileUpdate(props) {
     href: "https://github.com/jjh204",
     target: "_blank"
   }, "GitHub"), _react.default.createElement(_NavDropdown.default.Item, {
-    href: "www.linkedin.com/in/jenhobbs204",
+    href: "https://www.linkedin.com/in/jenhobbs204/",
     target: "_blank"
   }, "LinkedIn"))), _react.default.createElement(_Button.default, {
     onClick: onLogOut,
@@ -47078,7 +47075,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61972" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63066" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
