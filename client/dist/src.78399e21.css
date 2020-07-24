@@ -54,6 +54,7 @@
   left: 0;
   padding-top: 2em;
   color: #ffffff;
+  overflow-y: auto;
 }
 
 .registration-form {
@@ -259,6 +260,7 @@
   left: 0;
   padding-top: 2em;
   color: #ffffff;
+  overflow-y: auto;
 }
 
 .update-profile {
@@ -336,6 +338,7 @@ h2 {
 
 .navbar-link {
   margin-left: 1.5em;
+  color: #999999;
 }
 
 footer {
