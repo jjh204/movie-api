@@ -96,22 +96,6 @@ export class ProfileView extends React.Component {
 
     return (
       <Container>
-        <Navbar collapseOnSelect expand="lg" bg="custom" variant="dark" className="fixed-top navbar-main">
-          <Navbar.Brand as={Link} to="/" className="navbar-brand">SuperFlix!</Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link as={Link} to="/" className="navbar-link">Home</Nav.Link>
-              <Nav.Link as={Link} to="/users/:userId" className="navbar-link">Profile</Nav.Link>
-              <NavDropdown title="About Developer" id="collasible-nav-dropdown" className="navbar-link">
-                <NavDropdown.Item href="https://jjh204.github.io/portfolio-website" target="_blank">Profile</NavDropdown.Item>
-                <NavDropdown.Item href="https://github.com/jjh204" target="_blank">GitHub</NavDropdown.Item>
-                <NavDropdown.Item href="https://www.linkedin.com/in/jenhobbs204/" target="_blank">LinkedIn</NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-            <Button onClick={this.onLogOut} variant="dark" type="submit" className="button log-out-button"> Log Out</Button>
-          </Navbar.Collapse>
-        </Navbar>
         <h1 className="profile-title">Welcome {this.state.Username}!</h1>
         <Card style={{ backgroundImage: `url(${ProfileImage})`, backgroundSize: 'cover', width: '50rem' }} className="profile-view">
           <Card.Body>
