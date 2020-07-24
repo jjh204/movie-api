@@ -94,12 +94,12 @@ export class MainView extends React.Component {
           <Route path="/movies/:movieId" render={({ match }) => <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
 
           <Route path="/directors/:name" render={({ match }) => {
-            if (!movies) return <div className="main-view" />;
+            if (!movies || movies.length === 0) return <div className="main-view" />;
             return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
           }} />
           <Route path="/genres/:name" render={({ match }) => {
 
-            if (!movies) return <div className="main-view" />;
+            if (!movies || movies.length === 0) return <div className="main-view" />;
             return <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />
           }} />
           <Route exact path="/users/:userId" render={() => <ProfileView movies={movies} />} />

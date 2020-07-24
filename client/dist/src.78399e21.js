@@ -45902,9 +45902,7 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var director = this.props.director;
-      if (!director) return _react.default.createElement("div", {
-        className: "main-view"
-      });
+      if (!director) return null;
       return _react.default.createElement("div", null, _react.default.createElement(_Navbar.default, {
         collapseOnSelect: true,
         expand: "lg",
@@ -46869,7 +46867,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         path: "/directors/:name",
         render: function render(_ref2) {
           var match = _ref2.match;
-          if (!movies) return _react.default.createElement("div", {
+          if (!movies || movies.length === 0) return _react.default.createElement("div", {
             className: "main-view"
           });
           return _react.default.createElement(_directorView.DirectorView, {
@@ -46882,7 +46880,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         path: "/genres/:name",
         render: function render(_ref3) {
           var match = _ref3.match;
-          if (!movies) return _react.default.createElement("div", {
+          if (!movies || movies.length === 0) return _react.default.createElement("div", {
             className: "main-view"
           });
           return _react.default.createElement(_genreView.GenreView, {
@@ -47090,7 +47088,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54472" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64494" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
