@@ -1,10 +1,14 @@
+$primarycolor: #ffffff;
+$secondarycolor: #000000;
+$tertiarycolor: #030c61;
+
 .movie-card {
   display: inline-flex;
   margin: 3.5em;
 }
 
 .movie-card-title {
-  color: #030c61;
+  color: $tertiarycolor;
   font-family: 'Bangers', cursive;
   font-size: 2em;
   padding-bottom: 0.5em;
@@ -17,7 +21,7 @@
 .movie-links {
   font-family: 'Bangers', cursive;
   font-size: 1.3em;
-  color: #030c61;
+  color: $tertiarycolor;
   margin-bottom: 0.3em;
 }
 
