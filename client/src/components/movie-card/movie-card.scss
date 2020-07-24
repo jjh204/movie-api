@@ -1,5 +1,6 @@
 .movie-card {
   display: inline-flex;
+  margin: 3.5em;
 }
 
 .movie-card-title {
@@ -33,6 +34,7 @@
 @media all and (max-width: 750px) {
   .movie-card {
     max-width: 85%;
+    margin: 2em;
   } 
 
   .movie-links {
