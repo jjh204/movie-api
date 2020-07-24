@@ -45,7 +45,7 @@ export function MoviesList(props) {
           <NavDropdown title="About Developer" id="collasible-nav-dropdown" className="navbar-link">
             <NavDropdown.Item href="https://jjh204.github.io/portfolio-website" target="_blank">Profile</NavDropdown.Item>
             <NavDropdown.Item href="https://github.com/jjh204" target="_blank">GitHub</NavDropdown.Item>
-            <NavDropdown.Item href="www.linkedin.com/in/jenhobbs204" target="_blank">LinkedIn</NavDropdown.Item>
+            <NavDropdown.Item href="https://www.linkedin.com/in/jenhobbs204/" target="_blank">LinkedIn</NavDropdown.Item>
           </NavDropdown>
         </Nav>
         <Button onClick={onLogOut} variant="dark" type="submit" className="button log-out-button"> Log Out</Button>
