@@ -45167,49 +45167,7 @@ function MoviesList(props) {
 
   return _react.default.createElement("div", {
     className: "movies-list"
-  }, _react.default.createElement(_Navbar.default, {
-    collapseOnSelect: true,
-    expand: "lg",
-    bg: "custom",
-    variant: "dark",
-    className: "fixed-top navbar-main"
-  }, _react.default.createElement(_Navbar.default.Brand, {
-    as: _reactRouterDom.Link,
-    to: "/",
-    className: "navbar-brand"
-  }, "SuperFlix!"), _react.default.createElement(_Navbar.default.Toggle, {
-    "aria-controls": "responsive-navbar-nav"
-  }), _react.default.createElement(_Navbar.default.Collapse, {
-    id: "responsive-navbar-nav"
-  }, _react.default.createElement(_Nav.default, {
-    className: "mr-auto"
-  }, _react.default.createElement(_Nav.default.Link, {
-    as: _reactRouterDom.Link,
-    to: "/",
-    className: "navbar-link"
-  }, "Home"), _react.default.createElement(_Nav.default.Link, {
-    as: _reactRouterDom.Link,
-    to: "/users/:userId",
-    className: "navbar-link"
-  }, "Profile"), _react.default.createElement(_NavDropdown.default, {
-    title: "About Developer",
-    id: "collasible-nav-dropdown",
-    className: "navbar-link"
-  }, _react.default.createElement(_NavDropdown.default.Item, {
-    href: "https://jjh204.github.io/portfolio-website",
-    target: "_blank"
-  }, "Profile"), _react.default.createElement(_NavDropdown.default.Item, {
-    href: "https://github.com/jjh204",
-    target: "_blank"
-  }, "GitHub"), _react.default.createElement(_NavDropdown.default.Item, {
-    href: "https://www.linkedin.com/in/jenhobbs204/",
-    target: "_blank"
-  }, "LinkedIn"))), _react.default.createElement(_Button.default, {
-    onClick: onLogOut,
-    variant: "dark",
-    type: "submit",
-    className: "button log-out-button"
-  }, " Log Out"))), _react.default.createElement(_visibilityFilterInput.default, {
+  }, _react.default.createElement(_visibilityFilterInput.default, {
     visibilityFilter: visibilityFilter
   }), filteredMovies.map(function (m) {
     return _react.default.createElement(_movieCard.MovieCard, {
@@ -47075,7 +47033,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63066" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64206" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
