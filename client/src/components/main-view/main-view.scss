@@ -1,13 +1,16 @@
+$primarycolor: #ffffff;
+$secondarycolor: #000000;
+$tertiarycolor: #030c61;
 
 * {
   display: box;
 }
 
 body {
-  color: #000000;
+  color: $secondarycolor;
   font-family: 'Roboto', sans-serif;
   font-size: 1em;
-  background: #000000;
+  background: $secondarycolor;
   overflow-y: auto;
 
   }
@@ -16,14 +19,14 @@ h1 {
   text-align: center;
   font-family: 'Bangers', cursive;
   font-size: 8em;
-  color: #ffffff;
+  color: $primarycolor;
 }
 
 h2 {
   text-align: center;
   font-family: 'Bangers', cursive;
   font-size: 5em;
-  color: #ffffff;
+  color: $primarycolor;
 }
 
 .main-view {
@@ -58,7 +61,7 @@ footer {
   text-align: right;
   margin-top: 5em;
   margin-right: 1em;
-  color: #ffffff;
+  color: $primarycolor;
   font-size: 0.7em;
 }
 
