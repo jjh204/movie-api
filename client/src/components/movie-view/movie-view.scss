@@ -35,8 +35,22 @@
   font-size: 1em;
 }
 
+.movie-view-img {
+  float: left;
+  max-height: 785px;
+  border: 5px solid #ffffff;
+  border-radius: 5px;
+}
+
 @media all and (max-width: 750px) {
-  .movie-view-card {
-    width: 80%;
+
+.movie-view-img {
+    max-width: 95%;
   }
+  
+.movie-view-card {
+  max-width: 95%;
+}
+
+
 }
