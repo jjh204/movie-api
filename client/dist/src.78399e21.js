@@ -46590,9 +46590,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           to: "/",
           className: "navbar-brand"
         }, "SuperFlix!"), _react.default.createElement(_Navbar.default.Toggle, {
-          "aria-controls": "responsive-navbar-nav"
+          "aria-controls": "basic-navbar-nav"
         }), _react.default.createElement(_Navbar.default.Collapse, {
-          id: "responsive-navbar-nav"
+          id: "basic-navbar-nav"
         }, _react.default.createElement(_Nav.default, {
           className: "mr-auto"
         }, _react.default.createElement(_Nav.default.Link, {
@@ -46603,20 +46603,11 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           as: _reactRouterDom.Link,
           to: "/users/:userId",
           className: "navbar-link"
-        }, "Profile"), _react.default.createElement(_NavDropdown.default, {
-          title: "About Developer",
-          id: "collasible-nav-dropdown",
-          className: "navbar-link"
-        }, _react.default.createElement(_NavDropdown.default.Item, {
+        }, "Profile"), _react.default.createElement(_Nav.default.Link, {
           href: "https://jjh204.github.io/portfolio-website",
-          target: "_blank"
-        }, "Portfolio"), _react.default.createElement(_NavDropdown.default.Item, {
-          href: "https://github.com/jjh204",
-          target: "_blank"
-        }, "GitHub"), _react.default.createElement(_NavDropdown.default.Item, {
-          href: "https://www.linkedin.com/in/jenhobbs204/",
-          target: "_blank"
-        }, "LinkedIn"))), _react.default.createElement(_Button.default, {
+          target: "_blank",
+          className: "navbar-link"
+        }, "Developer Portfolio")), _react.default.createElement(_Button.default, {
           onClick: this.onLogOut,
           variant: "dark",
           type: "submit",
@@ -46867,7 +46858,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65368" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51024" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
