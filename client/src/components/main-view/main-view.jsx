@@ -109,7 +109,7 @@ export class MainView extends React.Component {
               <Nav className="mr-auto">
                 <Nav.Link as={Link} to="/" className="navbar-link">Home</Nav.Link>
                 <Nav.Link as={Link} to="/users/:userId" className="navbar-link">Profile</Nav.Link>
-                <Nav.Link href="https://jjh204.github.io/portfolio-website" className="navbar-link">About Developer</Nav.Link>
+                <Nav.Link href="https://jjh204.github.io/portfolio-website" target="_blank" className="navbar-link">Developer Portfolio</Nav.Link>
               </Nav>
               <Button onClick={this.onLogOut} variant="dark" type="submit" className="button log-out-button"> Log Out</Button>
             </Navbar.Collapse>
