@@ -6,9 +6,6 @@ import { Link } from 'react-router-dom';
 import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 import { MovieCard } from '../movie-card/movie-card';
 
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 
 const mapStateToProps = state => {
@@ -32,25 +29,15 @@ export function MoviesList(props) {
       || m.Genre.Name.toLowerCase().includes(visibilityFilter.toLowerCase()));
   }
 
+  if (!movies) return <div className="main-view" />;
+
   return <div className="movies-list">
-    {/* <Navbar collapseOnSelect expand="lg" bg="custom" variant="dark" className="fixed-top navbar-main">
-      <Navbar.Brand as={Link} to="/" className="navbar-brand">SuperFlix!</Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link as={Link} to="/" className="navbar-link">Home</Nav.Link>
-          <Nav.Link as={Link} to="/users/:userId" className="navbar-link">Profile</Nav.Link>
-          <NavDropdown title="About Developer" id="collasible-nav-dropdown" className="navbar-link">
-            <NavDropdown.Item href="https://jjh204.github.io/portfolio-website" target="_blank">Profile</NavDropdown.Item>
-            <NavDropdown.Item href="https://github.com/jjh204" target="_blank">GitHub</NavDropdown.Item>
-            <NavDropdown.Item href="https://www.linkedin.com/in/jenhobbs204/" target="_blank">LinkedIn</NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-        <Button onClick={onLogOut} variant="dark" type="submit" className="button log-out-button"> Log Out</Button>
-      </Navbar.Collapse>
-</Navbar> */}
     <VisibilityFilterInput visibilityFilter={visibilityFilter} />
     {filteredMovies.map(m => <MovieCard key={m._id} movie={m} />)}
+    <footer>
+      <p>Designed and created by Jen Hobbs. </p>
+      <p>Movie data from IMDB. Photo's from UnSplash.</p>
+    </footer>
   </div>;
 }
 

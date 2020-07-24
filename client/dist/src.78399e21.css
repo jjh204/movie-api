@@ -139,9 +139,11 @@
 
 .movie-view-img {
   float: left;
-  max-height: 785px;
+  width: 33em;
+  height: 49em;
   border: 5px solid #ffffff;
   border-radius: 5px;
+  margin-right: 0.5em;
 }
 
 @media all and (max-width: 750px) {
