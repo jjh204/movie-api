@@ -33,7 +33,7 @@ export function MoviesList(props) {
   }
 
   return <div className="movies-list">
-    <Navbar collapseOnSelect expand="lg" bg="custom" variant="dark" className="fixed-top navbar-main">
+    {/* <Navbar collapseOnSelect expand="lg" bg="custom" variant="dark" className="fixed-top navbar-main">
       <Navbar.Brand as={Link} to="/" className="navbar-brand">SuperFlix!</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
@@ -48,7 +48,7 @@ export function MoviesList(props) {
         </Nav>
         <Button onClick={onLogOut} variant="dark" type="submit" className="button log-out-button"> Log Out</Button>
       </Navbar.Collapse>
-    </Navbar>
+</Navbar> */}
     <VisibilityFilterInput visibilityFilter={visibilityFilter} />
     {filteredMovies.map(m => <MovieCard key={m._id} movie={m} />)}
   </div>;
