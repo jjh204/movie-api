@@ -32,8 +32,6 @@ export function MoviesList(props) {
       || m.Genre.Name.toLowerCase().includes(visibilityFilter.toLowerCase()));
   }
 
-  if (!movies) return <div className="main-view" />;
-
   return <div className="movies-list">
     <Navbar collapseOnSelect expand="lg" bg="custom" variant="dark" className="fixed-top navbar-main">
       <Navbar.Brand as={Link} to="/" className="navbar-brand">SuperFlix!</Navbar.Brand>
