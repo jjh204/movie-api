@@ -67,9 +67,7 @@ export class MovieView extends React.Component {
         </Navbar>
         <Container className="movie-view-container">
           <div className="movie-view">
-            <Card style={{ float: 'left', width: '33rem', height: '49rem' }} className="movie-view-card">
-              <Card.Img variant="top" src={movie.ImagePath} style={{ maxHeight: 800, marginTop: 2 }} />
-            </Card>
+            <img src={movie.ImagePath} className="movie-view-img" />
             <Card style={{ width: '33rem', height: '49rem' }} className="movie-view-card">
               <Card.Body className="movie-view-body">
                 <Card.Title className="movie-view-title">{movie.Title + ' - ' + movie.Released}</Card.Title>

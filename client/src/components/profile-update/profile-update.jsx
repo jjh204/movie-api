@@ -72,7 +72,7 @@ export function ProfileUpdate(props) {
           <Button onClick={onLogOut} variant="dark" type="submit" className="button log-out-button"> Log Out</Button>
         </Navbar.Collapse>
       </Navbar>
-      <div className="update-profile" style={{ backgroundImage: `url(${UpdateImage})`, backgroundRepeat: 'no-repeat', backgroundSize: 'fill' }}>
+      <div className="update-profile" style={{ backgroundImage: `url(${UpdateImage})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
         <h2>Update your profile</h2>
         <Form className="profile-form">
           <Form.Group controlId="formBasicUsername" className="update-item">

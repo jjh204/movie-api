@@ -16,7 +16,7 @@ export class MovieCard extends React.Component {
     const { movie } = this.props;
 
     return (
-      <Card key={movie._id} style={{ width: '30rem', margin: 55 }} className="movie-card" >
+      <Card key={movie._id} style={{ width: '30rem' }} className="movie-card" >
         <Card.Img variant="top" src={movie.ImagePath} className="movie-card-img" />
         <Card.Body>
           <Link to={`/movies/${movie._id}`}>

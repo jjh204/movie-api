@@ -38258,8 +38258,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       return _react.default.createElement(_Card.default, {
         key: movie._id,
         style: {
-          width: '30rem',
-          margin: 55
+          width: '30rem'
         },
         className: "movie-card"
       }, _react.default.createElement(_Card.default.Img, {
@@ -45734,21 +45733,10 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "movie-view-container"
       }, _react.default.createElement("div", {
         className: "movie-view"
-      }, _react.default.createElement(_Card.default, {
-        style: {
-          float: 'left',
-          width: '33rem',
-          height: '49rem'
-        },
-        className: "movie-view-card"
-      }, _react.default.createElement(_Card.default.Img, {
-        variant: "top",
+      }, _react.default.createElement("img", {
         src: movie.ImagePath,
-        style: {
-          maxHeight: 800,
-          marginTop: 2
-        }
-      })), _react.default.createElement(_Card.default, {
+        className: "movie-view-img"
+      }), _react.default.createElement(_Card.default, {
         style: {
           width: '33rem',
           height: '49rem'
@@ -45902,7 +45890,9 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var director = this.props.director;
-      if (!director) return null;
+      if (!director) return _react.default.createElement("div", {
+        className: "main-view"
+      });
       return _react.default.createElement("div", null, _react.default.createElement(_Navbar.default, {
         collapseOnSelect: true,
         expand: "lg",
@@ -46608,7 +46598,7 @@ function ProfileUpdate(props) {
     style: {
       backgroundImage: "url(".concat(_profileUpdate2.default, ")"),
       backgroundRepeat: 'no-repeat',
-      backgroundSize: 'fill'
+      backgroundSize: 'cover'
     }
   }, _react.default.createElement("h2", null, "Update your profile"), _react.default.createElement(_Form.default, {
     className: "profile-form"
@@ -47088,7 +47078,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64494" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59852" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
