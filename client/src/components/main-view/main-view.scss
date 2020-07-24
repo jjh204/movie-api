@@ -1,6 +1,7 @@
 $primarycolor: #ffffff;
 $secondarycolor: #000000;
 $tertiarycolor: #030c61;
+$navbarcolor: #999999;
 
 * {
   display: box;
@@ -55,6 +56,7 @@ h2 {
 
 .navbar-link {
   margin-left: 1.5em;
+  color: $navbarcolor;
 }
 
 footer {
