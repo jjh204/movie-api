@@ -104,16 +104,16 @@ export class MainView extends React.Component {
         <Router basename="/client">
           <Navbar collapseOnSelect expand="lg" bg="custom" variant="dark" className="fixed-top navbar-main">
             <Navbar.Brand as={Link} to="/" className="navbar-brand">SuperFlix!</Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
                 <Nav.Link as={Link} to="/" className="navbar-link">Home</Nav.Link>
                 <Nav.Link as={Link} to="/users/:userId" className="navbar-link">Profile</Nav.Link>
-                {/*} <NavDropdown title="About Developer" id="collasible-nav-dropdown" className="navbar-link">
+                <NavDropdown title="About Developer" id="basic-nav-dropdown" className="navbar-link">
                   <NavDropdown.Item href="https://jjh204.github.io/portfolio-website" target="_blank">Portfolio</NavDropdown.Item>
                   <NavDropdown.Item href="https://github.com/jjh204" target="_blank">GitHub</NavDropdown.Item>
                   <NavDropdown.Item href="https://www.linkedin.com/in/jenhobbs204/" target="_blank">LinkedIn</NavDropdown.Item>
-      </NavDropdown> */}
+                </NavDropdown>
               </Nav>
               <Button onClick={this.onLogOut} variant="dark" type="submit" className="button log-out-button"> Log Out</Button>
             </Navbar.Collapse>
