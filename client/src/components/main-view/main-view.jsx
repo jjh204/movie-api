@@ -17,6 +17,13 @@ import { GenreView } from '../genre-view/genre-view';
 import { ProfileView } from '../profile-view/profile-view';
 import { ProfileUpdate } from '../profile-update/profile-update';
 
+import { Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+
 import './main-view.scss';
 
 export class MainView extends React.Component {
@@ -29,8 +36,6 @@ export class MainView extends React.Component {
          user: null 
   }; */
   }
-
-  // refresh page goes back to initial login - needs to be fixed
 
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
@@ -83,34 +88,56 @@ export class MainView extends React.Component {
     // before the movies have loaded
     if (!movies) return <div className="main-view" />;
 
-    return (
-      <Router basename="/client">
-        <div className="main-view">
-          <Route exact path="/" render={() => {
-            if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-            return <MoviesList movies={movies} />;
-          }} />
-          <Route exact path="/register" render={() => <RegistrationView />} />
-          <Route path="/movies/:movieId" render={({ match }) => <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
+    if (!user) {
+      return (
+        <Router basename="/client">
+          <div className="main-view">
+            <Container>
+              <Route exact path="/" render={() => <LoginView onLoggedIn={user => this.onLoggedIn(user)} />} />
+              <Route exact path="/register" render={() => <RegistrationView />} />
+            </Container>
+          </div>
+        </Router>
+      );
+    } else {
+      return (
+        <Router basename="/client">
+          <Navbar collapseOnSelect expand="lg" bg="custom" variant="dark" className="fixed-top navbar-main">
+            <Navbar.Brand as={Link} to="/" className="navbar-brand">SuperFlix!</Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="mr-auto">
+                <Nav.Link as={Link} to="/" className="navbar-link">Home</Nav.Link>
+                <Nav.Link as={Link} to="/users/:userId" className="navbar-link">Profile</Nav.Link>
+                <NavDropdown title="About Developer" id="collasible-nav-dropdown" className="navbar-link">
+                  <NavDropdown.Item href="https://jjh204.github.io/portfolio-website" target="_blank">Portfolio</NavDropdown.Item>
+                  <NavDropdown.Item href="https://github.com/jjh204" target="_blank">GitHub</NavDropdown.Item>
+                  <NavDropdown.Item href="https://www.linkedin.com/in/jenhobbs204/" target="_blank">LinkedIn</NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+              <Button onClick={this.onLogOut} variant="dark" type="submit" className="button log-out-button"> Log Out</Button>
+            </Navbar.Collapse>
+          </Navbar>
+          <div className="main-view">
+            <Route exact path="/" render={() => <MoviesList movies={movies} />} />
 
-          <Route path="/directors/:name" render={({ match }) => {
-            if (!movies || movies.length === 0) return <div className="main-view" />;
-            return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
-          }} />
-          <Route path="/genres/:name" render={({ match }) => {
+            <Route path="/movies/:movieId" render={({ match }) => <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
 
-            if (!movies || movies.length === 0) return <div className="main-view" />;
-            return <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />
-          }} />
-          <Route exact path="/users/:userId" render={() => <ProfileView movies={movies} />} />
-          <Route exact path="/users/:userId/update" render={() => <ProfileUpdate movies={movies} />} />
-        </div>
-        <footer>
-          <p>Designed and created by Jen Hobbs. </p>
-          <p>Movie data from IMDB. Photo's from UnSplash.</p>
-        </footer>
-      </Router>
-    );
+            <Route path="/directors/:name" render={({ match }) => {
+              if (!movies || movies.length === 0) return <div className="main-view" />;
+              return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
+            }} />
+            <Route path="/genres/:name" render={({ match }) => {
+
+              if (!movies || movies.length === 0) return <div className="main-view" />;
+              return <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />
+            }} />
+            <Route exact path="/users/:userId" render={() => <ProfileView movies={movies} />} />
+            <Route exact path="/users/:userId/update" render={() => <ProfileUpdate movies={movies} />} />
+          </div>
+        </Router>
+      );
+    }
   }
 }
 
