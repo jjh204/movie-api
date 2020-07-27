@@ -63,7 +63,7 @@ export function ProfileUpdate(props) {
             <Form.Label>Username:</Form.Label>
             <Form.Control type="text" value={username} onChange={e => updateUsername(e.target.value)} placeholder="Update username" autoFocus />
             <Form.Text className="text-muted">
-              Must have a minimim of 5 characters
+              Must be alphanumeric and have a minimim of 5 characters.
       </Form.Text>
           </Form.Group>
 
@@ -71,7 +71,7 @@ export function ProfileUpdate(props) {
             <Form.Label>Password:</Form.Label>
             <Form.Control type="password" value={password} onChange={e => updatePassword(e.target.value)} placeholder="Update password" />
             <Form.Text className="text-muted">
-              We recommend your password to be 8-20 characters long
+              We recommend your password to be 8-20 characters long.
       </Form.Text>
           </Form.Group>
 
