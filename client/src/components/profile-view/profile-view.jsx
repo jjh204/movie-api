@@ -6,10 +6,9 @@ import { Link } from "react-router-dom";
 
 import { connect } from 'react-redux';
 import { setUser } from '../../actions/actions';
+import Moment from 'moment';
 
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -31,12 +30,6 @@ export class ProfileView extends React.Component {
     };
   }
 
-  formatDate(date) {
-    if (date) date = date.toString().substring(0, 10);
-    const newDate = date.split('-').reverse().join('-');
-    return newDate;
-  }
-
   getUser(token) {
     const userId = localStorage.getItem('user');
 
@@ -47,7 +40,7 @@ export class ProfileView extends React.Component {
         Username: res.data.Username,
         Password: res.data.Password,
         Email: res.data.Email,
-        Birthday: this.formatDate(res.data.Birthday),
+        Birthday: res.data.Birthday,
         Favorites: res.data.Favorites
       });
 
@@ -102,8 +95,8 @@ export class ProfileView extends React.Component {
             <Link to={`/`} className="profile-back">Back</Link>
             <Card.Text className="profile-text profile-text-first">Username: {this.state.Username}</Card.Text>
             <Card.Text className="profile-text">Email: {this.state.Email}</Card.Text>
-            <Card.Text className="profile-text">Birthday: {this.state.Birthday}</Card.Text>
-            <Link to={'/users/:userId/update'}>
+            <Card.Text className="profile-text">Birthday: {Moment(this.state.Birthday).format('DD-MMMM-YYYY')}</Card.Text>
+            <Link to={"/users/:userId/update"}>
               <Button size="sm" variant="dark" className="profile-button">Update Profile</Button>
             </Link>
             <Button onClick={() => this.deleteUser()} size="sm" variant="danger" className="profile-button">Delete Profile</Button>
