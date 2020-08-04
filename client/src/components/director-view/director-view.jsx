@@ -16,12 +16,6 @@ export class DirectorView extends React.Component {
     this.state = {};
   }
 
-  onLogOut() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    window.open('/client', '_self');
-  }
-
   render() {
     const { director } = this.props;
 
