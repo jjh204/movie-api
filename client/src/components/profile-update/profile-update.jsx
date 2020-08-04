@@ -7,9 +7,6 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { setUser } from '../../actions/actions';
 
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -40,18 +37,12 @@ export function ProfileUpdate(props) {
       const data = res.data;
       localStorage.setItem("user", data.Username);
       alert('Your profile was successfully updated.');
-      window.open("/users/:userId", "_self");
+      window.open("/client/users/:userId", "_self");
     })
       .catch((e) => {
         console.log(e);
         alert('There was an error updating your profile. Please check all fields have been completed.');
       });
-  };
-
-  const onLogOut = (e) => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    window.open('/client', '_self');
   };
 
   return (
