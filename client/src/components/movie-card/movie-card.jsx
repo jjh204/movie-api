@@ -1,18 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { Link } from 'react-router-dom';
-
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import './movie-card.scss';
 
+/**
+ * @requires React
+ * @requires prop-types
+ * @requires react-router-dom
+ * @requires react-bootstrap/Card
+ * @requires react-bootstrap/Button
+ * @requires ./movie-card.scss
+ */
+
 export class MovieCard extends React.Component {
 
   render() {
-    // This is given to the <MovieCard/> component by the outer world 
-    // which, in this case, is `MainView`, as `MainView` is what’s
-    // connected to your database via the movies endpoint of the API
+    /** This is given to the <MovieCard/> component by the outer world 
+      * which, in this case, is `MainView`, as `MainView` is what’s
+      * connected to your database via the movies endpoint of the API 
+      */
     const { movie } = this.props;
 
     return (
@@ -36,6 +44,11 @@ export class MovieCard extends React.Component {
     );
   }
 }
+
+/**
+ * setting the prop types that are allowed for the movie card
+ * @type {array} movie
+ */
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({

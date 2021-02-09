@@ -1,29 +1,44 @@
 import React from 'react';
 import axios from 'axios';
-
 import { connect } from 'react-redux';
-
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
 import { setMovies, setUser } from '../../actions/actions';
-
 import MoviesList from '../movies-list/movies-list';
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
-// import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { ProfileView } from '../profile-view/profile-view';
 import { ProfileUpdate } from '../profile-update/profile-update';
-
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-
 import './main-view.scss';
+
+/**
+  * @requires react
+  * @requires axois
+  * @requires react-redux
+  * @requires react-router-dom
+  * @requires ../../actions/actions
+  * @requires ../movies-list/movies-list
+  * @requires ../registration-view/registration-view
+  * @requires ../login-view/login-view
+  * @requires ../movie-view/movie-view
+  * @requires ../director-view/director-view
+  * @requires ../genre-view/genre-view
+  * @requires ../profile-view/profile-view
+  * @requires ../profile-update/profile-update
+  * @requires react-router-dom
+  * @requires react-bootstrap/Container
+  * @requires react-bootstrap/Button
+  * @requires react-bootstrap/Nav
+  * @requires react-bootstrap/Navbar
+  * @requires ./main-view.scss
+  */
 
 export class MainView extends React.Component {
 
@@ -47,6 +62,13 @@ export class MainView extends React.Component {
     }
   }
 
+  /**
+   * checking that the user is logged in against the registered users list. If logged in then the auth
+   * data is stored and the full movie view can be rendered
+   * @function onLoggedIn
+   * @param {*} authData 
+   */
+
   onLoggedIn(authData) {
     console.log(authData);
     //this.setState({
@@ -57,6 +79,13 @@ export class MainView extends React.Component {
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
   }
+
+  /**
+   * API call to get movies from the stored database. The user must be logged in for this
+   * call to return.
+   * @function getMovies
+   * @param {string} token
+   */
 
   getMovies(token) {
     axios.get('https://superflix-api.herokuapp.com/movies', {
@@ -71,11 +100,22 @@ export class MainView extends React.Component {
       });
   }
 
+  /**
+   * function to allow users to log out of the app
+   * @function onLogOut
+   */
+
   onLogOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     window.open('/client', '_self');
   }
+
+  /**
+   * rendering the main view components. If user is not logged in or registered then they can do so. Once
+   * the user exists then they will receive the full movie view list and be able to navigate to the 
+   * profile view and favorite movies list.
+   */
 
   render() {
     // if state not initialized this will throw on runtime

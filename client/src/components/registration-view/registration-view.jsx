@@ -1,19 +1,42 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-
 import { Link } from "react-router-dom";
-
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './registration-view.scss';
 import CinemaMain from './cinema-main.jpg';
+
+/**
+  * @requires react
+  * @requires axois
+  * @requires prop-types
+  * @requires react-router-dom
+  * @requires react-bootstrap/Button
+  * @requires react-bootstrap/Form
+  * @requires ./registration-view.scss
+  * @requires ./cinema-main.jpg
+  */
+
+/**
+ * exporting the registration view function to allow new users to register their information
+ * @function RegistrationView
+ * @param {string} props 
+ */
 
 export function RegistrationView(props) {
   const [username, createUsername] = useState('');
   const [password, createPassword] = useState('');
   const [email, createEmail] = useState('');
   const [birthday, createBirthday] = useState('');
+
+  /**
+ * submitting the register information to be added 
+ * @type {string} username
+ * @type {string} password
+ * @type {string} email
+ * @type {date} birthday
+ */
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -34,6 +57,10 @@ export function RegistrationView(props) {
         alert('There was an error with your registration.');
       });
   };
+
+  /**
+   * returning the registration form with the required fields for users to complete
+   */
 
   return (
     <div className="registration-view" style={{ backgroundImage: `url(${CinemaMain})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
@@ -77,6 +104,10 @@ export function RegistrationView(props) {
     </div >
   );
 }
+
+/**
+ * setting the prop types to the registration view that are required to register
+ */
 
 RegistrationView.propTypes = {
   user: PropTypes.shape({

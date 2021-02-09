@@ -1,21 +1,42 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-
 import { connect } from 'react-redux';
 import { setUser } from '../../actions/actions';
-
 import { Link } from "react-router-dom";
-
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './login-view.scss';
 import CinemaMain from './cinema-main.jpg';
 
+/**
+  * @requires react
+  * @requires axois
+  * @requires prop-types
+  * @requires react-redux
+  * @requires ../../actions/actions
+  * @requires react-router-dom
+  * @requires react-bootstrap/Button
+  * @requires react-bootstrap/Form
+  * @requires ./login-view.scss
+  * @requires ./cinema-main.jpg
+  */
+
+/**
+ * exporting the login view function to allow users to navigate to the log in screen
+ * @function LoginView
+ * @param {*} props 
+ */
 
 export function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  /**
+   * submitting the log on information to be checked against registered users
+   * @type {string} username
+   * @type {string} password
+   */
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,6 +54,10 @@ export function LoginView(props) {
         console.log('Error');
       });
   };
+
+  /**
+   * returning the log in form with the required fields for users to complete
+   */
 
   return (
     <div className="login-view" style={{ backgroundImage: `url(${CinemaMain})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
@@ -62,6 +87,10 @@ export function LoginView(props) {
     </div>
   );
 }
+
+/**
+ * setting the prop types to the login view that are required to log in
+ */
 
 LoginView.propTypes = {
   user: PropTypes.shape({

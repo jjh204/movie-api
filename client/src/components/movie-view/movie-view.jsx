@@ -1,13 +1,22 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-
 import { Link } from "react-router-dom";
-
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import './movie-view.scss';
+
+/**
+  * @requires react
+  * @requires axois
+  * @requires prop-types
+  * @requires react-router-dom
+  * @requires react-bootstrap/Container
+  * @requires react-bootstrap/Card
+  * @requires react-bootstrap/Button
+  * @requires ./movie-view.scss
+  */
 
 export class MovieView extends React.Component {
 
@@ -17,10 +26,24 @@ export class MovieView extends React.Component {
     this.state = {};
   }
 
+  /**
+   * Using a function to improve the formatting of the starting data. This is adding
+   * a comma between first and last names.
+   * @function formatString
+   * @param {string} staring 
+   */
+
   formatStaring(staring) {
     if (staring) staring = staring.join(', ');
     return staring;
   }
+
+  /**
+   * when a user selects their favorite movie this function enable it to be added to the
+   * users favorite movie list in their profile view
+   * @function addToFavorites
+   * @param {array} movie 
+   */
 
   addToFavorites(movie) {
     const token = localStorage.getItem('token');
@@ -33,11 +56,20 @@ export class MovieView extends React.Component {
     });
   }
 
+  /**
+   * function to allow users to log out of the app
+   * @function onLogOut
+   */
+
   onLogOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     window.open('/client', '_self');
   }
+
+  /**
+   * rendering the whole imformation for the movie in a new movie view
+   */
 
   render() {
     const { movie } = this.props;
@@ -78,6 +110,11 @@ export class MovieView extends React.Component {
     );
   }
 }
+
+/**
+ * setting the prop types that are allowed for the movie view
+ * @type {array} movie
+ */
 
 MovieView.propTypes = {
   movie: PropTypes.shape({

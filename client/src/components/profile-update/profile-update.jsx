@@ -1,23 +1,48 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-
 import { Link } from "react-router-dom";
-
 import { connect } from 'react-redux';
 import { setUser } from '../../actions/actions';
-
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './profile-update.scss';
 import UpdateImage from './profile-update.jpg';
 
+/**
+  * @requires react
+  * @requires axois
+  * @requires prop-types
+  * @requires react-router-dom
+  * @requires react-redux
+  * @requires ../../actions/actions
+  * @requires react-bootstrap/Container
+  * @requires react-bootstrap/Button
+  * @requires react-bootstrap/Form
+  * @requires ./profile-update.scss
+  * @requires ./profile-update.jpg
+  */
+
+/**
+ * exporting the profile update view function to allow users to update their existing profile information
+ * @function ProfileUpdate
+ * @param {*} props 
+ */
+
 export function ProfileUpdate(props) {
   const [username, updateUsername] = useState('');
   const [password, updatePassword] = useState('');
   const [email, updateEmail] = useState('');
   const [birthday, updateBirthday] = useState('');
+
+  /**
+  * submitting the updated information to be added to the database
+  * @type {string} username
+  * @type {string} password
+  * @type {string} email
+  * @type {date} birthday
+  */
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -44,6 +69,11 @@ export function ProfileUpdate(props) {
         alert('There was an error updating your profile. Please check all fields have been completed.');
       });
   };
+
+  /**
+   * returning the update profile form with the required fields for users to complete in order to update 
+   * their information
+   */
 
   return (
     <Container>
@@ -89,6 +119,10 @@ export function ProfileUpdate(props) {
     </Container>
   )
 };
+
+/**
+ * setting the prop types to the profile update view that are required to update a users profile
+ */
 
 ProfileUpdate.propTypes = {
   user: PropTypes.shape({

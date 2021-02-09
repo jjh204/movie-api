@@ -1,19 +1,30 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-
 import { Link } from "react-router-dom";
-
 import { connect } from 'react-redux';
 import { setUser } from '../../actions/actions';
 import Moment from 'moment';
-
-
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './profile-view.scss';
 import ProfileImage from './profile-image.jpg';
+
+/**
+  * @requires react
+  * @requires axois
+  * @requires prop-types
+  * @requires react-router-dom
+  * @requires react-redux
+  * @requires ../../actions/actions
+  * @requires moment
+  * @requires react-bootstrap/Container
+  * @requires react-bootstrap/Button
+  * @requires react-bootstrap/Card
+  * @requires ./profile-view.scss
+  * @requires ./profile-image.jpg
+  */
 
 export class ProfileView extends React.Component {
 
@@ -29,6 +40,12 @@ export class ProfileView extends React.Component {
       movies: [],
     };
   }
+
+  /**
+   * function call to get the user token to be able to display the current users information
+   * @function getUser
+   * @param {string} token 
+   */
 
   getUser(token) {
     const userId = localStorage.getItem('user');
@@ -54,6 +71,13 @@ export class ProfileView extends React.Component {
     this.getUser(accessToken);
   }
 
+  /**
+  * function enabling the user to delete their profile from the database should they wish to.
+  * This code also includes a double check alert to comfirm deletion.
+  * @function deleteUser
+  * @param {string} token 
+  */
+
   deleteUser(token) {
     const userId = localStorage.getItem('user');
     if (!confirm('Are you sure you want to delete your profile?')) return;
@@ -64,6 +88,12 @@ export class ProfileView extends React.Component {
     localStorage.removeItem('token');
     window.open('/client', '_self');
   }
+
+  /**
+  * function enabling the user to delete movies from their favorite movies list
+  * @function deleteFavorites
+  * @param {array} movie 
+  */
 
   deleteFavorites(movie) {
     const token = localStorage.getItem('token');
@@ -76,11 +106,22 @@ export class ProfileView extends React.Component {
     });
   }
 
+  /**
+   * function to allow users to log out of the app
+   * @function onLogOut
+   */
+
   onLogOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     window.open('/client', '_self');
   }
+
+  /**
+   * rendering the profile view to display the current users information as well as their favorite 
+   * movies list as created by the current user. Favorite movies can be viewed or deleted
+   * from this view.
+   */
 
   render() {
     const { movies } = this.props;
@@ -124,6 +165,10 @@ export class ProfileView extends React.Component {
     );
   }
 }
+
+/**
+ * setting the prop types to the profile view that are required for the users profile
+ */
 
 ProfileView.propTypes = {
   user: PropTypes.shape({

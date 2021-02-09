@@ -8,6 +8,16 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import './genre-view.scss';
 
+/**
+  * @requires react
+  * @requires prop-types
+  * @requires react-router-dom
+  * @requires react-bootstrap/Container
+  * @requires react-bootstrap/Card
+  * @requires react-bootstrap/Button
+  * @requires ./genre-view.scss
+  */
+
 export class GenreView extends React.Component {
 
   constructor() {
@@ -16,6 +26,11 @@ export class GenreView extends React.Component {
     this.state = {};
   }
 
+  /**
+   * function to allow users to log out of the app
+   * @function onLogOut
+   */
+
   onLogOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
@@ -23,6 +38,10 @@ export class GenreView extends React.Component {
   }
 
   render() {
+
+    /**
+      * rendering the genre view component 
+      */
     const { genre } = this.props;
 
     if (!genre) return <div className="main-view" />;

@@ -7,7 +7,18 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import './director-view.scss';
-import DirectorImage from './director-image.jpg'
+import DirectorImage from './director-image.jpg';
+
+/**
+  * @requires react
+  * @requires prop-types
+  * @requires react-router-dom
+  * @requires react-bootstrap/Button
+  * @requires react-bootstrap/Container
+  * @requires react-bootstrap/Card
+  * @requires ./director-view.scss
+  * @requires ./director-image.jpg
+  */
 
 export class DirectorView extends React.Component {
 
@@ -17,6 +28,9 @@ export class DirectorView extends React.Component {
   }
 
   render() {
+    /**
+     * rendering the director view component 
+     */
     const { director } = this.props;
 
     if (!director) return <div className="main-view" />;
